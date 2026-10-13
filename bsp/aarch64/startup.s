@@ -146,6 +146,13 @@ _init_cpu0:
   orr x0, x0, #(1 << 1) // Disable IRQ bypass
   orr x0, x0, #(1 << 0) // System reg access at EL3 enable
   msr icc_sre_el3, x0
+
+  /* disable timer and masked (disable) interrupt */
+  mov x0, 0x02
+  msr CNTP_CTL_EL0, x0
+  /* set the timer frequency (armv8, cortex-a53) */
+  ldr x0, =62500000
+  msr CNTFRQ_EL0, x0
                    
 // **************************************************************************
 _el3_init:

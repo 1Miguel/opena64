@@ -1,28 +1,7 @@
 /*******************************************************************************
- * @file arm64.h
- * @brief AArch64 system-register and instruction helpers for C code.
+ * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  *
- * MIT License
- *
- * Copyright (c) 2026 Miguel Ugsimar
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * SPDX-License-Identifier: MIT
  *******************************************************************************/
 #ifndef __AARCH64__H
 #define __AARCH64__H
@@ -80,30 +59,29 @@ extern "C" {
 		__asm__ volatile("smc #" #imm::: "memory");                                        \
 	}
 
-#define __SYS_REG_FUNC(reg)                                                                        \
-	static inline void sys_reg_##reg##_write(uint64_t val)                                     \
-	{                                                                                          \
-		__MSR(reg, val);                                                                   \
-	}                                                                                          \
-                                                                                                   \
+#define __SYS_REG_FUNC_RO(reg)                                                                     \
 	static inline uint64_t sys_reg_##reg##_read(void)                                          \
 	{                                                                                          \
 		return __MRS(reg);                                                                 \
 	}                                                                                          \
-                                                                                                   \
+	static inline uint64_t sys_reg_##reg##_bit_get(uint64_t bit_msk)                           \
+	{                                                                                          \
+		return sys_reg_##reg##_read() & bit_msk;                                           \
+	}
+
+#define __SYS_REG_FUNC(reg)                                                                        \
+	__SYS_REG_FUNC_RO(reg)                                                                     \
+	static inline void sys_reg_##reg##_write(uint64_t val)                                     \
+	{                                                                                          \
+		__MSR(reg, val);                                                                   \
+	}                                                                                          \
 	static inline void sys_reg_##reg##_bit_set(uint64_t bit_msk)                               \
 	{                                                                                          \
 		sys_reg_##reg##_write(sys_reg_##reg##_read() | bit_msk);                           \
 	}                                                                                          \
-                                                                                                   \
 	static inline void sys_reg_##reg##_bit_clr(uint64_t bit_msk)                               \
 	{                                                                                          \
 		sys_reg_##reg##_write(sys_reg_##reg##_read() & (~bit_msk));                        \
-	}                                                                                          \
-                                                                                                   \
-	static inline uint64_t sys_reg_##reg##_bit_get(uint64_t bit_msk)                           \
-	{                                                                                          \
-		return sys_reg_##reg##_read() & bit_msk;                                           \
 	}
 
 __SYS_REG_FUNC(currentEL)
@@ -111,6 +89,10 @@ __SYS_REG_FUNC(SCR_EL3)
 __SYS_REG_FUNC(MPIDR_EL3)
 __SYS_REG_FUNC(SCR_EL1)
 __SYS_REG_FUNC(MPIDR_EL1)
+
+// GIC cpu interface system registers
+__SYS_REG_FUNC(ICC_CTLR_EL3)
+__SYS_REG_FUNC(ICC_SRE_EL3)
 __SYS_REG_FUNC(ICC_CTLR_EL1)
 __SYS_REG_FUNC(ICC_IAR0_EL1)
 __SYS_REG_FUNC(ICC_EOIR_EL1)
@@ -121,8 +103,12 @@ __SYS_REG_FUNC(ICC_IGRPEN0_EL1)
 __SYS_REG_FUNC(ICC_IGRPEN1_EL1)
 __SYS_REG_FUNC(ICC_PMR_EL1)
 
-__SYS_REG_FUNC(ICC_CTLR_EL3)
-__SYS_REG_FUNC(ICC_SRE_EL3)
+// arm generic timer system registers
+__SYS_REG_FUNC(CNTP_CTL_EL0)
+__SYS_REG_FUNC(CNTP_CVAL_EL0)
+__SYS_REG_FUNC(CNTP_TVAL_EL0)
+__SYS_REG_FUNC(CNTPCT_EL0)
+__SYS_REG_FUNC_RO(CNTFRQ_EL0)
 
 /**
  * @brief helper function to read arm system register.

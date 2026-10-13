@@ -1,6 +1,7 @@
 /*******************************************************************************
- * @file gic_v3.c
- * @brief GICv3 distributor and redistributor operations.
+ * @author Miguel Ugsimar <jmjugsimar@gmail.com>
+ *
+ * SPDX-License-Identifier: MIT
  *******************************************************************************/
 
 #include "gic.h"
@@ -30,7 +31,7 @@
 
 static uintptr_t gicv3_dist = GICD_BASE_ADDRESS;
 static uintptr_t gicv3_rdist[GICR_NUM_CORE] = {
-  0x080A0000UL,
+	0x080A0000UL,
 };
 
 static inline uint32_t get_cpu_id(void)
@@ -55,12 +56,13 @@ static inline uint32_t gicv3_mpidr_affinity(uint64_t mpidr)
 
 static inline void wait_rwp(uint32_t int_id)
 {
-  if (GIC_IS_SPI(int_id))
-	  while (mmio_bit_get_u32(GICD_CTLR(gicv3_dist),
-                           GICD_CTLR_RWP));
-  else
-	  while (mmio_bit_get_u32(gicr_rdist_base_addr(),
-                           GICR_CTLR_RWP));
+	if (GIC_IS_SPI(int_id)) {
+		while (mmio_bit_get_u32(GICD_CTLR(gicv3_dist), GICD_CTLR_RWP))
+			;
+	} else {
+		while (mmio_bit_get_u32(gicr_rdist_base_addr(), GICR_CTLR_RWP))
+			;
+	}
 }
 
 /**
@@ -69,44 +71,44 @@ static inline void wait_rwp(uint32_t int_id)
  */
 static void gic_dist_init(void)
 {
-  uint32_t num_int_line; // number of interrupt line
-  uint32_t gicd_ctlr;
+	uint32_t num_int_line; // number of interrupt line
+	uint32_t gicd_ctlr;
 
-  gicd_ctlr = mmio_bit_get_u32(GICD_CTLR(gicv3_dist),
-          GICD_CTLR_ENABLE_G0 | GICD_CTLR_ENABLE_G1NS | GICD_CTLR_ENABLE_G1S);
+	gicd_ctlr = mmio_bit_get_u32(GICD_CTLR(gicv3_dist), GICD_CTLR_ENABLE_G0 |
+								    GICD_CTLR_ENABLE_G1NS |
+								    GICD_CTLR_ENABLE_G1S);
 	// if groups are already enabled, then a different core has already
 	// configured the gic distributor, prevent other cores to re-configure
 	if (gicd_ctlr) {
 		return;
 	}
-  
-  // disable gic distributor
+
+	// disable gic distributor
 	mmio_write_u32(GICD_CTLR(gicv3_dist), 0);
 	wait_rwp(0);
 
-  num_int_line = mmio_read_u32(GICD_TYPER(gicv3_dist));
-  for (int i = 1; i < (num_int_line + 1); i++) {
-    mmio_write_u32(GICD_ICENABLERn(gicv3_dist, i), 0);
-    mmio_write_u32(GICD_ICPENDRn(gicv3_dist, i), 0);
-    mmio_write_u32(GICD_IGROUPRn(gicv3_dist, i), IGROUPR_VAL);
-    mmio_write_u32(GICD_IGROUPMODRn(gicv3_dist, i), 0);
-  }
+	num_int_line = mmio_read_u32(GICD_TYPER(gicv3_dist));
+	for (int i = 1; i < (num_int_line + 1); i++) {
+		mmio_write_u32(GICD_ICENABLERn(gicv3_dist, i), 0);
+		mmio_write_u32(GICD_ICPENDRn(gicv3_dist, i), 0);
+		mmio_write_u32(GICD_IGROUPRn(gicv3_dist, i), IGROUPR_VAL);
+		mmio_write_u32(GICD_IGROUPMODRn(gicv3_dist, i), 0);
+	}
 
-  for (int i = 2; i < (2 * (num_int_line + 1)); i++) {
-    // set to trigger sensitive by default
-    mmio_write_u32(GICD_ICFGRn(gicv3_dist, i), 0x55555555);
-  }
+	for (int i = 2; i < (2 * (num_int_line + 1)); i++) {
+		// set to trigger sensitive by default
+		mmio_write_u32(GICD_ICFGRn(gicv3_dist, i), 0x55555555);
+	}
 
-  // enable group0 (non-secure state)
-  // NOTE: that for now this GIC driver supports Non-Secure mode
-  // so there is only two groups, group1 and group1NS
-  // the view of this register is different in non-secure mode
-  // (SCR_EL3.NS == 1).
-  //
-  // The ARE_NS shares the bit position of ARE_S, and we only want
-  // to enable G1NS for the distributor
-	mmio_bit_set_u32(GICD_CTLR(gicv3_dist),
-                  GICD_CTRL_ARE_S | GICD_CTLR_ENABLE_G1A);
+	// enable group0 (non-secure state)
+	// NOTE: that for now this GIC driver supports Non-Secure mode
+	// so there is only two groups, group1 and group1NS
+	// the view of this register is different in non-secure mode
+	// (SCR_EL3.NS == 1).
+	//
+	// The ARE_NS shares the bit position of ARE_S, and we only want
+	// to enable G1NS for the distributor
+	mmio_bit_set_u32(GICD_CTLR(gicv3_dist), GICD_CTRL_ARE_S | GICD_CTLR_ENABLE_G1A);
 	wait_rwp(0);
 }
 
@@ -121,16 +123,16 @@ static void gic_rdist_enable(void)
 		return; // GIC see PE is already online
 	}
 
-  // disable irq
-  mmio_write_u32(GICR_ICENABLER0(base_addr), 0);
-  // clear any pending
-  mmio_write_u32(GICR_ICPENDR0(base_addr), 0);
-  // level-triggered
-  mmio_write_u32(GICR_ICFGR0(base_addr), 0);
-  mmio_write_u32(GICR_ICFGR1(base_addr), 0);
-  // group set to NS
-  // TODO: secured state routing and grouping
-  mmio_write_u32(GICR_IGROUPR0(base_addr), IGROUPR_VAL);
+	// disable irq
+	mmio_write_u32(GICR_ICENABLER0(base_addr), 0);
+	// clear any pending
+	mmio_write_u32(GICR_ICPENDR0(base_addr), 0);
+	// level-triggered
+	mmio_write_u32(GICR_ICFGR0(base_addr), 0);
+	mmio_write_u32(GICR_ICFGR1(base_addr), 0);
+	// group set to NS
+	// TODO: secured state routing and grouping
+	mmio_write_u32(GICR_IGROUPR0(base_addr), IGROUPR_VAL);
 
 	// clear the GICR_WAKER.ProcessorSleep then
 	// poll GICR_WAKER.ChildenAslee until it reads `0`
@@ -150,8 +152,8 @@ void gic_cpuif_init(void)
 			  ICC_SRE_LOW_EL_ENABLE;
 		sys_reg_write(ICC_SRE_EL1, icc_sre);
 
-    // test if SRE was actually enabled
-    __ASSERT(sys_reg_bit_get(ICC_SRE_EL1, ICC_SRE_SRE_ENABLE));
+		// test if SRE was actually enabled
+		__ASSERT(sys_reg_bit_get(ICC_SRE_EL1, ICC_SRE_SRE_ENABLE));
 	}
 
 	// enable group0 interrupts
@@ -160,8 +162,8 @@ void gic_cpuif_init(void)
 
 void gic_v3_init(void)
 {
-  gic_dist_init();
-  gic_cpuif_init();
+	gic_dist_init();
+	gic_cpuif_init();
 	gic_rdist_enable();
 }
 

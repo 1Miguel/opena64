@@ -1,29 +1,9 @@
 /*******************************************************************************
- * @file gic_v3.h
- * @brief GIC v3 internal register.
+ * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  *
- * MIT License
- *
- * Copyright (c) 2026 Miguel Ugsimar
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * SPDX-License-Identifier: MIT
  *******************************************************************************/
+
 #ifndef __GIC_V3__H
 #define __GIC_V3__H
 
@@ -102,7 +82,7 @@ extern "C" {
 #define GICR_WAKER_PS_BIT_MSK (1u << 1) /* processor sleep */
 
 /* GICR_CTLR Register bit definitions */
-#define GICR_CTLR_RWP         (1u << 3)
+#define GICR_CTLR_RWP (1u << 3)
 
 /* GICD_CTLR Interrupt group definitions */
 #define GICD_CTLR_ENABLE_G0   (1u << 0)

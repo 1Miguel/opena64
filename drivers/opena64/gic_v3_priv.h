@@ -1,3 +1,9 @@
+/*******************************************************************************
+ * @author Miguel Ugsimar <jmjugsimar@gmail.com>
+ *
+ * SPDX-License-Identifier: MIT
+ *******************************************************************************/
+
 /* Cache and Share ability for ITS & Redistributor LPI state tables */
 #define GIC_BASER_CACHE_NGNRNE     (0x0UL) /* Device-nGnRnE */
 #define GIC_BASER_CACHE_INNERLIKE  (0x0UL) /* Same as Inner Cacheability. */

@@ -1,7 +1,14 @@
+if(NOT DEFINED LINKER_SCRIPT)
+  message(FATAL "'LINKER_SCRIPT' must be defined")
+endif()
+
+if(NOT EXISTS ${LINKER_SCRIPT})
+  message(FATAL "'LINKER_SCRIPT' ${LINKER_SCRIPT} does not exist")
+endif()
+
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR aarch64)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
-set(LINKER_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/bsp/aarch64/linker.ld")
 
 set(AARCH64_TOOLCHAIN_PREFIX "aarch64-none-elf" CACHE STRING
     "Bare-metal AArch64 toolchain prefix")

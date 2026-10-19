@@ -141,6 +141,17 @@ int uart_pl011_set_irq_cb(struct uart_pl011 *uart, uart_pl011_irq_cb_t cb, void 
 int uart_pl011_enable(struct uart_pl011 *uart);
 
 /**
+ * @brief Disable the PL011 uart peripheral block.
+ *
+ * @param[in] uart pointer to uart instance.
+ *
+ * @retval 0 at success.
+ * @retval -EINVAL invalid args.
+ * @retval -eret other errors.
+ */
+int uart_pl011_disable(struct uart_pl011 *uart);
+
+/**
  * @brief Poll until an available character is received.
  *
  * @note this is a blocking io call.

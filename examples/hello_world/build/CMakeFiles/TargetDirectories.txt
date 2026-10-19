@@ -1,0 +1,3 @@
+/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/firmware.dir
+/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/edit_cache.dir
+/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/rebuild_cache.dir

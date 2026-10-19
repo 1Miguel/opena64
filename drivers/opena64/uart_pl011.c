@@ -64,6 +64,21 @@ int uart_pl011_enable(struct uart_pl011 *uart)
 	return 0;
 }
 
+int uart_pl011_disable(struct uart_pl011 *uart)
+{
+	if (!uart) {
+		return -EINVAL;
+	}
+
+	mmio_bit_clr_u32(UARTCR(uart->reg),
+			 (UART_PL011_CR_UARTEN_BIT_MSK | UART_PL011_CR_TXE_BIT_MSK |
+			  UART_PL011_CR_RXE_BIT_MSK));
+
+	fifo_flush(uart);
+
+	return 0;
+}
+
 int uart_pl011_poll_out(struct uart_pl011 *uart, uint8_t c)
 {
 	if (!uart) {

@@ -1,0 +1,1662 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/migs/.local/systemc/install/"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/home/migs/.local/systemc/install/uname"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/uname"
+    found: "/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/migs/dev/opena64/cmake/aarch64-none-elf.cmake:9 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:152 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "AARCH64_CC"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-gcc"
+    candidate_directories:
+      - "/home/migs/.local/systemc/install/"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/migs/dev/opena64/cmake/aarch64-none-elf.cmake:13 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:152 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "AARCH64_AS"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-gcc"
+    candidate_directories:
+      - "/home/migs/.local/systemc/install/"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/migs/dev/opena64/cmake/aarch64-none-elf.cmake:17 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:152 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "AARCH64_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-objcopy"
+    candidate_directories:
+      - "/home/migs/.local/systemc/install/"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-objcopy"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/migs/dev/opena64/cmake/aarch64-none-elf.cmake:21 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:152 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "AARCH64_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-objdump"
+    candidate_directories:
+      - "/home/migs/.local/systemc/install/"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-objdump"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:213 (message)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      The target system is: Generic -  - aarch64
+      The host system is: Linux - 7.2.8-2-cachyos - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/home/migs/.local/systemc/install/"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/home/migs/.local/systemc/install/gmake"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/gmake"
+      - "/bin/gmake"
+      - "/home/migs/.cargo/bin/gmake"
+      - "/home/migs/.local/bin/gmake"
+      - "/home/migs/bin/gmake"
+      - "/usr/local/bin/gmake"
+      - "/usr/bin/gmake"
+      - "/usr/local/sbin/gmake"
+      - "/usr/bin/site_perl/gmake"
+      - "/usr/bin/vendor_perl/gmake"
+      - "/usr/bin/core_perl/gmake"
+      - "/usr/lib/rustup/bin/gmake"
+      - "/home/migs/.local/systemc/install/make"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/make"
+    found: "/bin/make"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+    found: "/usr/share/cmake/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc 
+      Build flags: 
+      Id flags: -c;--target=aarch64-none-elf 
+      
+      The output was:
+      1
+      aarch64-none-elf-gcc: error: unrecognized command-line option '--target=aarch64-none-elf'
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+    found: "/usr/share/cmake/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/ld: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/lib/libc.a(libc_a-exit.o): in function `exit':
+      /tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/src/newlib-cygwin/newlib/libc/stdlib/exit.c:65:(.text.exit+0x2c): undefined reference to `_exit'
+      /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/ld: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/lib/libc.a(libc_a-closer.o): in function `_close_r':
+      /tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/src/newlib-cygwin/newlib/libc/reent/closer.c:45:(.text._close_r+0x1c): undefined reference to `_close'
+      /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/ld: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/lib/libc.a(libc_a-lseekr.o): in function `_lseek_r':
+      /tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/src/newlib-cygwin/newlib/libc/reent/lseekr.c:49:(.text._lseek_r+0x24): undefined reference to `_lseek'
+      /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/ld: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/lib/libc.a(libc_a-readr.o): in function `_read_r':
+      /tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/src/newlib-cygwin/newlib/libc/reent/readr.c:49:(.text._read_r+0x24): undefined reference to `_read'
+      /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/ld: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/lib/libc.a(libc_a-writer.o): in function `_write_r':
+      /tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/src/newlib-cygwin/newlib/libc/reent/writer.c:49:(.text._write_r+0x24): undefined reference to `_write'
+      /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/ld: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/lib/libc.a(libc_a-sbrkr.o): in function `_sbrk_r':
+      /tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/src/newlib-cygwin/newlib/libc/reent/sbrkr.c:51:(.text._sbrk_r+0x1c): undefined reference to `_sbrk'
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+    found: "/usr/share/cmake/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is GNU, found in:
+        /home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/4.4.4/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-ar"
+      - "ar"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-ranlib"
+      - "ranlib"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-strip"
+      - "strip"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-ld"
+      - "ld"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-ld"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-nm"
+      - "nm"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-nm"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-readelf"
+      - "readelf"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-dlltool"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-dlltool"
+      - "/bin/aarch64-none-elf-dlltool"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-dlltool"
+      - "/home/migs/.local/bin/aarch64-none-elf-dlltool"
+      - "/home/migs/bin/aarch64-none-elf-dlltool"
+      - "/usr/local/bin/aarch64-none-elf-dlltool"
+      - "/usr/bin/aarch64-none-elf-dlltool"
+      - "/usr/local/sbin/aarch64-none-elf-dlltool"
+      - "/usr/bin/site_perl/aarch64-none-elf-dlltool"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-dlltool"
+      - "/usr/bin/core_perl/aarch64-none-elf-dlltool"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-dlltool"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/dlltool"
+      - "/home/migs/.local/systemc/install/dlltool"
+      - "/bin/dlltool"
+      - "/home/migs/.cargo/bin/dlltool"
+      - "/home/migs/.local/bin/dlltool"
+      - "/home/migs/bin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/bin/site_perl/dlltool"
+      - "/usr/bin/vendor_perl/dlltool"
+      - "/usr/bin/core_perl/dlltool"
+      - "/usr/lib/rustup/bin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-tapi"
+      - "tapi"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-tapi"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-tapi"
+      - "/bin/aarch64-none-elf-tapi"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-tapi"
+      - "/home/migs/.local/bin/aarch64-none-elf-tapi"
+      - "/home/migs/bin/aarch64-none-elf-tapi"
+      - "/usr/local/bin/aarch64-none-elf-tapi"
+      - "/usr/bin/aarch64-none-elf-tapi"
+      - "/usr/local/sbin/aarch64-none-elf-tapi"
+      - "/usr/bin/site_perl/aarch64-none-elf-tapi"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-tapi"
+      - "/usr/bin/core_perl/aarch64-none-elf-tapi"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-tapi"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/tapi"
+      - "/home/migs/.local/systemc/install/tapi"
+      - "/bin/tapi"
+      - "/home/migs/.cargo/bin/tapi"
+      - "/home/migs/.local/bin/tapi"
+      - "/home/migs/bin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/bin/site_perl/tapi"
+      - "/usr/bin/vendor_perl/tapi"
+      - "/usr/bin/core_perl/tapi"
+      - "/usr/lib/rustup/bin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-gcc-ar-15.3"
+      - "aarch64-none-elf-gcc-ar-15"
+      - "aarch64-none-elf-gcc-ar15"
+      - "aarch64-none-elf-gcc-ar"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ar-15.3"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ar-15.3"
+      - "/bin/aarch64-none-elf-gcc-ar-15.3"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ar-15.3"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ar-15.3"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ar-15.3"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ar-15.3"
+      - "/usr/bin/aarch64-none-elf-gcc-ar-15.3"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ar-15.3"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ar-15.3"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ar-15.3"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ar-15.3"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ar-15.3"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ar-15"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ar-15"
+      - "/bin/aarch64-none-elf-gcc-ar-15"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ar-15"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ar-15"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ar-15"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ar-15"
+      - "/usr/bin/aarch64-none-elf-gcc-ar-15"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ar-15"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ar-15"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ar-15"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ar-15"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ar-15"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ar15"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ar15"
+      - "/bin/aarch64-none-elf-gcc-ar15"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ar15"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ar15"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ar15"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ar15"
+      - "/usr/bin/aarch64-none-elf-gcc-ar15"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ar15"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ar15"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ar15"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ar15"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ar15"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-gcc-ranlib-15.3"
+      - "aarch64-none-elf-gcc-ranlib-15"
+      - "aarch64-none-elf-gcc-ranlib15"
+      - "aarch64-none-elf-gcc-ranlib"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/bin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/usr/bin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ranlib-15.3"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ranlib-15"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ranlib-15"
+      - "/bin/aarch64-none-elf-gcc-ranlib-15"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ranlib-15"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ranlib-15"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ranlib-15"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ranlib-15"
+      - "/usr/bin/aarch64-none-elf-gcc-ranlib-15"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ranlib-15"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ranlib-15"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ranlib-15"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ranlib-15"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ranlib-15"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ranlib15"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ranlib15"
+      - "/bin/aarch64-none-elf-gcc-ranlib15"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ranlib15"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ranlib15"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ranlib15"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ranlib15"
+      - "/usr/bin/aarch64-none-elf-gcc-ranlib15"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ranlib15"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ranlib15"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ranlib15"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ranlib15"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ranlib15"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1328 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:174 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      aarch64-none-elf-gcc (Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)) 15.3.1 20260627
+      Copyright (C) 2025 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:271 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-gcc-ar-"
+      - "aarch64-none-elf-gcc-ar-"
+      - "aarch64-none-elf-gcc-ar"
+      - "aarch64-none-elf-gcc-ar"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ar-"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ar-"
+      - "/bin/aarch64-none-elf-gcc-ar-"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ar-"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ar-"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ar-"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ar-"
+      - "/usr/bin/aarch64-none-elf-gcc-ar-"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ar-"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ar-"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ar-"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ar-"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ar-"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ar-"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ar-"
+      - "/bin/aarch64-none-elf-gcc-ar-"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ar-"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ar-"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ar-"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ar-"
+      - "/usr/bin/aarch64-none-elf-gcc-ar-"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ar-"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ar-"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ar-"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ar-"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ar-"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ar"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:271 (include)"
+      - "CMakeLists.txt:7 (project)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "aarch64-none-elf-gcc-ranlib-"
+      - "aarch64-none-elf-gcc-ranlib-"
+      - "aarch64-none-elf-gcc-ranlib"
+      - "aarch64-none-elf-gcc-ranlib"
+    candidate_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/"
+      - "/home/migs/.local/systemc/install/"
+      - "/bin/"
+      - "/home/migs/.cargo/bin/"
+      - "/home/migs/.local/bin/"
+      - "/home/migs/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/usr/lib/rustup/bin/"
+    searched_directories:
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ranlib-"
+      - "/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/home/migs/.local/systemc/install/aarch64-none-elf-gcc-ranlib-"
+      - "/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/home/migs/.cargo/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/home/migs/.local/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/home/migs/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/local/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/bin/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/local/sbin/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/bin/site_perl/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/bin/vendor_perl/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/bin/core_perl/aarch64-none-elf-gcc-ranlib-"
+      - "/usr/lib/rustup/bin/aarch64-none-elf-gcc-ranlib-"
+    found: "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc-ranlib"
+    search_context:
+      ENV{PATH}:
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/home/migs/.local/systemc/install"
+        - "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin"
+        - "/bin"
+        - "/home/migs/.cargo/bin"
+        - "/home/migs/.local/bin"
+        - "/home/migs/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/usr/lib/rustup/bin"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:123 (try_compile)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/CMakeScratch/TryCompile-VlqBB6"
+      binary: "/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/CMakeScratch/TryCompile-VlqBB6"
+    cmakeVariables:
+      CMAKE_C_COMPILER_TARGET: "aarch64-none-elf"
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: false
+      stdout: |
+        Change Dir: '/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/CMakeScratch/TryCompile-VlqBB6'
+        
+        Run Build Command(s): /bin/cmake -E env VERBOSE=1 /bin/make -f Makefile cmTC_14e08/fast
+        /bin/make  -f CMakeFiles/cmTC_14e08.dir/build.make CMakeFiles/cmTC_14e08.dir/build
+        make[1]: Entering directory '/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/CMakeScratch/TryCompile-VlqBB6'
+        Building C object CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj
+        /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc   -v -ffreestanding -fno-stack-protector -g -Wl,--specs=nosys.specs -mcpu=cortex-a53 -mgeneral-regs-only -o CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc
+        Target: aarch64-none-elf
+        Configured with: /tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/src/gcc/configure --target=aarch64-none-elf --prefix=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/install --with-gmp=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --with-mpfr=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --with-mpc=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --with-isl=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --with-zstd=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --disable-shared --disable-nls --disable-threads --enable-checking=release --enable-languages=c,c++,fortran --with-newlib --with-gnu-as --with-headers=yes --with-gnu-ld --with-native-system-header-dir=/include --with-sysroot=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/install/aarch64-none-elf --with-bugurl=https://gitlab.arm.com/tooling/gnu-devtools-for-arm/-/issues/ --with-pkgversion='Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)'
+        Thread model: single
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.3.1 20260627 (Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)) 
+        COLLECT_GCC_OPTIONS='-v' '-ffreestanding' '-fno-stack-protector' '-g' '-mcpu=cortex-a53' '-mgeneral-regs-only' '-o' 'CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_14e08.dir/'
+         /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../libexec/gcc/aarch64-none-elf/15.3.1/cc1 -quiet -v -iprefix /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/ -isysroot /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../aarch64-none-elf /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_14e08.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=cortex-a53 -mgeneral-regs-only -mlittle-endian -mabi=lp64 -g -version -ffreestanding -fno-stack-protector -o /tmp/ccVfcaEf.s
+        GNU C23 (Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)) version 15.3.1 20260627 (aarch64-none-elf)
+        	compiled by GNU C version 9.2.1 20191120 (Red Hat 9.2.1-2), GMP version 6.2.1, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.15-1-g835ea3a-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/../../lib/gcc/aarch64-none-elf/15.3.1/include"
+        ignoring nonexistent directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../aarch64-none-elf/usr/local/include"
+        ignoring duplicate directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/../../lib/gcc/aarch64-none-elf/15.3.1/include-fixed"
+        ignoring duplicate directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/../../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/include"
+        ignoring duplicate directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../aarch64-none-elf/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/include
+         /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/include-fixed
+         /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/include
+        End of search list.
+        Compiler executable checksum: 85621f677d52840aa21747841db7ee05
+        COLLECT_GCC_OPTIONS='-v' '-ffreestanding' '-fno-stack-protector' '-g' '-mcpu=cortex-a53' '-mgeneral-regs-only' '-o' 'CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_14e08.dir/'
+         /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/as -v --gdwarf-5 -EL -march=armv8-a+crc -mabi=lp64 -o CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj /tmp/ccVfcaEf.s
+        GNU assembler version 2.45.1 (aarch64-none-elf) using BFD version (Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)) 2.45.1.20260126
+        COMPILER_PATH=/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../libexec/gcc/aarch64-none-elf/15.3.1/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../libexec/gcc/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/
+        LIBRARY_PATH=/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/lib/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../aarch64-none-elf/lib/
+        COLLECT_GCC_OPTIONS='-v' '-ffreestanding' '-fno-stack-protector' '-g' '-mcpu=cortex-a53' '-mgeneral-regs-only' '-o' 'CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.'
+        Linking C static library libcmTC_14e08.a
+        /bin/cmake -P CMakeFiles/cmTC_14e08.dir/cmake_clean_target.cmake
+        /bin/cmake -E cmake_link_script CMakeFiles/cmTC_14e08.dir/link.txt --verbose=1
+        /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-ar qc libcmTC_14e08.a CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj
+        /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-ranlib libcmTC_14e08.a
+        make[1]: Leaving directory '/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/CMakeScratch/TryCompile-VlqBB6'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:255 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/include]
+          add: [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/include-fixed]
+          add: [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/include]
+        end of search list found
+        collapse include dir [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/include] ==> [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/lib/gcc/aarch64-none-elf/15.3.1/include]
+        collapse include dir [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/include-fixed] ==> [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/lib/gcc/aarch64-none-elf/15.3.1/include-fixed]
+        collapse include dir [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/include] ==> [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/aarch64-none-elf/include]
+        implicit include dirs: [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/lib/gcc/aarch64-none-elf/15.3.1/include;/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/lib/gcc/aarch64-none-elf/15.3.1/include-fixed;/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/aarch64-none-elf/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:291 (message)"
+      - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild))("|,| |$)]
+        ignore line: [Change Dir: '/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/CMakeScratch/TryCompile-VlqBB6']
+        ignore line: []
+        ignore line: [Run Build Command(s): /bin/cmake -E env VERBOSE=1 /bin/make -f Makefile cmTC_14e08/fast]
+        ignore line: [/bin/make  -f CMakeFiles/cmTC_14e08.dir/build.make CMakeFiles/cmTC_14e08.dir/build]
+        ignore line: [make[1]: Entering directory '/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/CMakeScratch/TryCompile-VlqBB6']
+        ignore line: [Building C object CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc   -v -ffreestanding -fno-stack-protector -g -Wl --specs=nosys.specs -mcpu=cortex-a53 -mgeneral-regs-only -o CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-gcc]
+        ignore line: [Target: aarch64-none-elf]
+        ignore line: [Configured with: /tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/src/gcc/configure --target=aarch64-none-elf --prefix=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/install --with-gmp=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --with-mpfr=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --with-mpc=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --with-isl=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --with-zstd=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/host-tools --disable-shared --disable-nls --disable-threads --enable-checking=release --enable-languages=c,c++,fortran --with-newlib --with-gnu-as --with-headers=yes --with-gnu-ld --with-native-system-header-dir=/include --with-sysroot=/tmp/jenkins-d04425ee/workspace/gnu_toolchains/arm_builds/arm-15/build-aarch64-none-elf/install/aarch64-none-elf --with-bugurl=https://gitlab.arm.com/tooling/gnu-devtools-for-arm/-/issues/ --with-pkgversion='Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)']
+        ignore line: [Thread model: single]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.3.1 20260627 (Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-ffreestanding' '-fno-stack-protector' '-g' '-mcpu=cortex-a53' '-mgeneral-regs-only' '-o' 'CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_14e08.dir/']
+        ignore line: [ /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../libexec/gcc/aarch64-none-elf/15.3.1/cc1 -quiet -v -iprefix /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/ -isysroot /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../aarch64-none-elf /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_14e08.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=cortex-a53 -mgeneral-regs-only -mlittle-endian -mabi=lp64 -g -version -ffreestanding -fno-stack-protector -o /tmp/ccVfcaEf.s]
+        ignore line: [GNU C23 (Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)) version 15.3.1 20260627 (aarch64-none-elf)]
+        ignore line: [	compiled by GNU C version 9.2.1 20191120 (Red Hat 9.2.1-2)  GMP version 6.2.1  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.15-1-g835ea3a-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/../../lib/gcc/aarch64-none-elf/15.3.1/include"]
+        ignore line: [ignoring nonexistent directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../aarch64-none-elf/usr/local/include"]
+        ignore line: [ignoring duplicate directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/../../lib/gcc/aarch64-none-elf/15.3.1/include-fixed"]
+        ignore line: [ignoring duplicate directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/../../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/include"]
+        ignore line: [ignoring duplicate directory "/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../aarch64-none-elf/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/include]
+        ignore line: [ /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/include-fixed]
+        ignore line: [ /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: 85621f677d52840aa21747841db7ee05]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-ffreestanding' '-fno-stack-protector' '-g' '-mcpu=cortex-a53' '-mgeneral-regs-only' '-o' 'CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_14e08.dir/']
+        ignore line: [ /opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/as -v --gdwarf-5 -EL -march=armv8-a+crc -mabi=lp64 -o CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj /tmp/ccVfcaEf.s]
+        ignore line: [GNU assembler version 2.45.1 (aarch64-none-elf) using BFD version (Arm GNU Toolchain 15.3.Rel1 (Build arm-15.149)) 2.45.1.20260126]
+        ignore line: [COMPILER_PATH=/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../libexec/gcc/aarch64-none-elf/15.3.1/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../libexec/gcc/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/bin/]
+        ignore line: [LIBRARY_PATH=/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../lib/gcc/aarch64-none-elf/15.3.1/../../../../aarch64-none-elf/lib/:/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/../aarch64-none-elf/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-ffreestanding' '-fno-stack-protector' '-g' '-mcpu=cortex-a53' '-mgeneral-regs-only' '-o' 'CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C static library libcmTC_14e08.a]
+        ignore line: [/bin/cmake -P CMakeFiles/cmTC_14e08.dir/cmake_clean_target.cmake]
+        ignore line: [/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14e08.dir/link.txt --verbose=1]
+        ignore line: [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-ar qc libcmTC_14e08.a CMakeFiles/cmTC_14e08.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/opt/arm-gnu-toolchain-15.3.rel1-x86_64-aarch64-none-elf/bin/aarch64-none-elf-ranlib libcmTC_14e08.a]
+        ignore line: [make[1]: Leaving directory '/home/migs/dev/opena64/examples/hello_world/build/CMakeFiles/CMakeScratch/TryCompile-VlqBB6']
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+...

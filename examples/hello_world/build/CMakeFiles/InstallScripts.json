@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/migs/dev/opena64/examples/hello_world/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -22,9 +22,8 @@ int main(void)
 
   char *p = msg;
 
-  do {
-    uart_pl011_poll_out(&uart_dev, *p);
-  } while (p++);
+  while (*p)
+    uart_pl011_poll_out(&uart_dev, *p++);
 
   // do nothing
   uart_pl011_disable(&uart_dev);

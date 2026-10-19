@@ -1,6 +1,6 @@
-file ./build_aarch64/firmware.elf
+file ./build/firmware.elf
 
-target remote :3333
+target remote :3334
 set pagination off
 set confirm off
 set print pretty on
@@ -63,7 +63,5 @@ delete
 
 machine_reset
 
-b gic_v3.c:122
-b int_33_irq_handler
 b _reset
 b main

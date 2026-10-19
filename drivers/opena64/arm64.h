@@ -59,6 +59,16 @@ extern "C" {
 		__asm__ volatile("smc #" #imm::: "memory");                                        \
 	}
 
+/**
+ * @brief Executes a Supervisory Call with an immediate value.
+ *
+ * @param imm Immediate value passed to the SVC instruction.
+ */
+#define svc(imm)                                                                                   \
+	{                                                                                          \
+		__asm__ volatile("svc #" #imm::: "memory");                                        \
+	}
+
 #define __SYS_REG_FUNC_RO(reg)                                                                     \
 	static inline uint64_t sys_reg_##reg##_read(void)                                          \
 	{                                                                                          \

@@ -1,3 +1,0 @@
-/home/migs/dev/opena64/examples/periodic_timer/build/CMakeFiles/firmware.dir
-/home/migs/dev/opena64/examples/periodic_timer/build/CMakeFiles/edit_cache.dir
-/home/migs/dev/opena64/examples/periodic_timer/build/CMakeFiles/rebuild_cache.dir

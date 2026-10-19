@@ -15,8 +15,7 @@ add_executable(firmware
     main.c
     # bsp
     ${OPENA64_BSP_DIR}/a53_renode/aarch64/el_exceptions.c
-    ${OPENA64_BSP_DIR}/a53_renode/aarch64/startup.s
-    ${OPENA64_BSP_DIR}/a53_renode/aarch64/irq_vector_tbl.c
+    ${OPENA64_BSP_DIR}/a53_renode/aarch64/startup.S
     ${OPENA64_BSP_DIR}/common/syscalls.c
     # drivers
     ${OPENA64_DRIVERS_DIR}/opena64/uart_pl011.c

@@ -12,25 +12,23 @@
 
 #define UART0 (0x09000000)
 
-struct uart_pl011 uart_dev = UART_PL011_INIT(UART0);
+static struct uart_pl011 uart_dev = UART_PL011_INIT(UART0);
 
 static void print(char *s)
 {
-  while (s++)
-    uart_pl011_poll_out(&uart_dev, *s);
-  
+  while (*s)
+    uart_pl011_poll_out(&uart_dev, *s++);
 }
 
 void timer_cb(void *cb_data)
 {
 	uint64_t *period_cnt = cb_data;
-	print("timer tick!\n");
+	print("timer tick!\n\r");
 	timer_set_relative((uint32_t)*period_cnt);
 }
 
 int main(void)
 {
-  char *msg = "hello world!";
 	uint64_t period_cnt = timer_ms_to_cnt(1000);
 
   // EL1 timer interrupts
@@ -41,10 +39,9 @@ int main(void)
 	uart_pl011_init(&uart_dev, &uart_cfg);
 	uart_pl011_enable(&uart_dev);
 
+  print("hello! timer start\n\r");
 	timer_set_irq_cb(timer_cb, &period_cnt);
 	timer_start();
-
-  print("timer start");
 	timer_set_relative((uint32_t)period_cnt);
 
   while(1);

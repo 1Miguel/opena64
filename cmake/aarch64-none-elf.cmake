@@ -75,7 +75,7 @@ add_compile_options(
   # aarch64-none-elf/lib/nosys.specs
   -Wl,--specs=nosys.specs
   -mcpu=cortex-a53
-  -mgeneral-regs-only
+  #-mgeneral-regs-only
 )
 
 # Set all linker flags, this is equivalent to calling

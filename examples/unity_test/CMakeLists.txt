@@ -10,6 +10,8 @@ set(CMAKE_TOOLCHAIN_FILE ${OPENA64_DIR}/cmake/aarch64-none-elf.cmake CACHE STRIN
 
 project(hello_world LANGUAGES C ASM)
 
+include(FetchContent)
+
 message(STATUS "fetch unity from git")
 FetchContent_Declare(
   unity
@@ -18,6 +20,25 @@ FetchContent_Declare(
 )
 message(STATUS "make unity available")
 FetchContent_MakeAvailable(unity)
+
+FetchContent_Declare(
+  fff
+  GIT_REPOSITORY https://github.com/meekrosoft/fff.git
+  GIT_TAG 5111c61e1ef7848e3afd3550044a8cf4405f4199
+)
+
+
+FetchContent_GetProperties(fff)
+if(NOT fff_POPULATED)
+  FetchContent_Populate(fff)
+endif()
+
+set(FFF_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/fff/include")
+file(MAKE_DIRECTORY "${FFF_INCLUDE_DIR}")
+configure_file("${fff_SOURCE_DIR}/fff.h" "${FFF_INCLUDE_DIR}/fff.h" COPYONLY)
+add_library(fff INTERFACE)
+
+target_include_directories(fff INTERFACE "${FFF_INCLUDE_DIR}")
 
 add_executable(firmware
     main.c
@@ -42,6 +63,8 @@ target_include_directories(firmware
     ${OPENA64_DRIVERS_DIR}
     ${OPENA64_BSP_DIR}/a53_renode/aarch64
 )
+
+target_link_libraries(firmware PUBLIC unity fff)
 
 set_target_properties(firmware PROPERTIES
     OUTPUT_NAME firmware

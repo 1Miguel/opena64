@@ -1,5 +1,5 @@
 # opena64
-Baremetal drivers for AArch64.
+Baremetal, standalone drivers for AArch64. This is not meant to support running OS, this is for baremetal applications only. In theory this drivers could also be used with RTOS applications but this drivers are still premature and have not been tested with RTOSes.
 
 # Running Hello World Example
 

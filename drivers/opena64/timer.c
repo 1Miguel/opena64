@@ -10,9 +10,9 @@
 static timer_irq_cb_t m_irq_cb = NULL;
 static timer_irq_cb_t m_cb_data = NULL;
 
-static inline void irq_enable(void) { sys_reg_bit_clr(CNTP_CTL_EL0, 2u); }
+#define cntp_el0_irq_enable() sys_reg_bit_clr(CNTP_CTL_EL0, 2u)
 
-static inline void irq_disable(void) { sys_reg_bit_set(CNTP_CTL_EL0, 2u); }
+#define cntp_el0_irq_disable() sys_reg_bit_set(CNTP_CTL_EL0, 2u)
 
 void timer_set_irq_cb(timer_irq_cb_t irq_cb, void *cb_data) {
   m_irq_cb = irq_cb;
@@ -33,14 +33,14 @@ void timer_poll(void) {
 void timer_set_relative(uint32_t tick) {
   sys_reg_write(CNTP_TVAL_EL0, (uint64_t)tick);
   if (m_irq_cb) {
-    irq_enable();
+    cntp_el0_irq_enable();
   }
 }
 
 void timer_set_absolute(uint64_t tick) {
   sys_reg_write(CNTP_CVAL_EL0, tick);
   if (m_irq_cb) {
-    irq_enable();
+    cntp_el0_irq_enable();
   }
 }
 
@@ -61,7 +61,7 @@ uint32_t timer_cnt_to_us(uint64_t cnt) {
 }
 
 void el1_cntp_irq_handler(void) {
-  irq_disable();
+  cntp_el0_irq_disable();
   if (m_irq_cb) {
     m_irq_cb(m_cb_data);
   }

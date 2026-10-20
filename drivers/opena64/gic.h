@@ -3,6 +3,20 @@
  *
  * SPDX-License-Identifier: MIT
  *******************************************************************************/
+
+/**
+ * @defgroup gic_v3
+ * @{
+ *
+ * @ingroup gic
+ *
+ * @brief gic api's.
+ *
+ * @version 1.0.0
+ *
+ * @date Oct 20 2026
+ */
+
 #ifndef __GIC__H
 #define __GIC__H
 
@@ -81,14 +95,25 @@ void gic_v3_int_set_priority(unsigned int int_id, uint8_t priority);
  * @param target_aff Target MPIDR affinity value; Aff0[7:4] selects the range.
  * @param target_list Bit mask selecting Aff0[3:0] targets in the affinity
  * group.
- * @return False when the driver is not initialized or the arguments are
- * invalid.
+ *
+ * @return -EINVAL if sgi_id is invalid.
  */
-void gic_v3_raise_sgi(unsigned int sgi_id, uint64_t target_aff,
-                      uint16_t target_list);
+int gic_v3_raise_sgi(unsigned int sgi_id, uint64_t target_aff,
+                     uint16_t target_list);
+
+/**
+ * @brief Sends an SGI to self.
+ *
+ * @param sgi_id SGI ID in the range 0-15.
+ *
+ * @return -EINVAL if sgi_id is invalid.
+ */
+int gic_v3_raise_sgi_self(unsigned int sgi_id);
 
 #ifdef __cplusplus
 }
 #endif // __cplusplus
 
 #endif // __GIC__H
+
+/**@}*/

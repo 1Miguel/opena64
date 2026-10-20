@@ -51,7 +51,7 @@ void uart_cb(struct uart_pl011 *uart, void *cb_data)
 	}
 
   if (uart_pl011_tx_fifo_ready(uart)) {
-		n = uart_pl011_tx_fifo(uart, buf, n);
+		uart_pl011_tx_fifo(uart, buf, n);
   }
 }
 

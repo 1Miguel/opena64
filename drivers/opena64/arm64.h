@@ -15,14 +15,25 @@ extern "C" {
 /**
  * @defgroup arm64 arch specific instruction api's
  * @{
- * @ingroup arm64
+ *
+ * @ingroup arm
  *
  * @brief MMIO api's
  */
 
-#define EA_BIT (1U << 3)
-#define IRQ_BIT (1U << 1)
-#define FIQ_BIT (1U << 2)
+/**
+ * @brief CPU affinity to u64 format.
+ *
+ * @param _aff0 affinity 0 value.
+ * @param _aff1 affinity 1 value.
+ * @param _aff2 affinity 2 value.
+ * @param _aff3 affinity 3 value.
+ *
+ * @return uint64 format of affinity.
+ */
+#define CPU_AFFINITY(_aff0, _aff1, _aff2, _aff3)                               \
+  ((_aff0 & 0xFF) | ((_aff1 & 0xFF) << 16) | ((_aff2 & 0xFF) << 24) |          \
+   ((_aff3 & 0xFF) << 32))
 
 /**
  * @brief Reads an AArch64 system register.
@@ -153,14 +164,27 @@ __SYS_REG_FUNC_RO(CNTFRQ_EL0)
 #define sys_reg_bit_get(reg, bit_msk) sys_reg_##reg##_bit_get(bit_msk)
 
 /**
- * @brief Enables IRQ routing to EL3 by setting the SCR_EL3.IRQ bit.
+ * @brief Enable interrupts (irq and fiq).
  */
-static inline void irq_enable_el3(void) { sys_reg_bit_set(SCR_EL3, IRQ_BIT); }
+static inline void irq_enable(void) {
+  __asm__ volatile("daifclr #3" ::: "memory");
+}
 
 /**
- * @brief Disables IRQ routing to EL3 by clearing the SCR_EL3.IRQ bit.
+ * @brief Disable interrupts (irq and fiq).
  */
-static inline void irq_disable_el3(void) { sys_reg_bit_clr(SCR_EL3, IRQ_BIT); }
+static inline void irq_disable(void) {
+  __asm__ volatile("daifclr #3" ::: "memory");
+}
+
+/**
+ * @brief Get the current cpu affinity.
+ *
+ * @return Current cpu affinity.
+ */
+static inline uint64_t curr_cpu_aff(void) {
+  return sys_reg_bit_get(MPIDR_EL1, 0xff00ffffff);
+}
 
 /**
  * @brief Get the current cpu id.
@@ -168,7 +192,7 @@ static inline void irq_disable_el3(void) { sys_reg_bit_clr(SCR_EL3, IRQ_BIT); }
  * @return Current cpu id.
  */
 static inline uint8_t curr_cpu_id(void) {
-  return sys_reg_bit_get(MPIDR_EL1, 0xFF);
+  return sys_reg_bit_get(MPIDR_EL1, 0xff);
 }
 
 /**
@@ -181,10 +205,10 @@ static inline uint8_t curr_exc_lvl(void) {
   return curr_el >> 2;
 }
 
+/** @} */
+
 #ifdef __cplusplus
 }
 #endif
-
-/** @} */
 
 #endif // __AARCH64__H

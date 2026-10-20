@@ -17,8 +17,6 @@ extern "C" {
  * @defgroup mmio api's
  * @{
  *
- * @ingroup mmio
- *
  * @brief MMIO api's
  */
 

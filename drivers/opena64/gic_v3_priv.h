@@ -4,6 +4,19 @@
  * SPDX-License-Identifier: MIT
  *******************************************************************************/
 
+/**
+ * @defgroup gic_v3_priv
+ * @{
+ *
+ * @ingroup gic_v3
+ *
+ * @brief Private gic_v3 definitions and macros
+ *
+ * @version 1.0.0
+ *
+ * @date Oct 20 2026
+ */
+
 #ifndef __GIC_V3__H
 #define __GIC_V3__H
 
@@ -11,6 +24,23 @@
 
 #ifdef __cplusplus
 extern "C" {
+#endif
+
+#ifndef GICD_BASE_ADDRESS
+#define GICD_BASE_ADDRESS 0x08000000UL
+#endif
+
+#ifndef GICR_BASE_ADDRESS
+#define GICR_BASE_ADDRESS 0x080A0000UL
+#endif
+
+/* default priority mask */
+#ifndef GIC_IDLE_PRIO
+#define GIC_IDLE_PRIO (0xFFU)
+#endif // GIC_IDLE_PRIO
+
+#ifndef GICR_NUM_CORE
+#define GICR_NUM_CORE (4)
 #endif
 
 #ifndef GIC_IRQ_ID_NUM_SGI
@@ -141,3 +171,5 @@ extern "C" {
 #endif
 
 #endif // __GIC_V3__H
+
+/**@}*/

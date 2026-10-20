@@ -3,6 +3,14 @@
  *
  * SPDX-License-Identifier: MIT
  *******************************************************************************/
+
+/**
+ * @defgroup arm arch specific instruction api's
+ * @{
+ *
+ * @brief MMIO api's
+ */
+
 #ifndef __ARM__H
 #define __ARM__H
 
@@ -84,3 +92,5 @@ static inline void isb(void) { __asm__ volatile("isb" ::: "memory"); }
 #endif
 
 #endif /* __ARM__H */
+
+/**@}*/

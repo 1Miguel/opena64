@@ -2,6 +2,11 @@
  * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  *
  * SPDX-License-Identifier: MIT
+ *
+ * @notes
+ * > oct 10, 2026: First version, only supports routing to EL1 non-secure.
+ *    no support for EL1 secure or EL3. Requires the GICD_CTLR.DS to be set
+ *    to 1, which disables security access.
  *******************************************************************************/
 
 #include "arm.h"
@@ -9,32 +14,14 @@
 #include "gic.h"
 #include "gic_v3_priv.h"
 #include "mmio.h"
-
+#include <errno.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-
 /**
  * @brief Interrupt handler.
  */
 typedef void (*gic_irq_handler_t)(void);
-
-/* default priority mask */
-#ifndef GIC_IDLE_PRIO
-#define GIC_IDLE_PRIO (0xFFU)
-#endif // GIC_IDLE_PRIO
-
-#ifndef GICR_NUM_CORE
-#define GICR_NUM_CORE (4)
-#endif
-
-#ifndef GICD_BASE_ADDRESS
-#define GICD_BASE_ADDRESS 0x08000000UL
-#endif
-
-#ifndef GICR_BASE_ADDRESS
-#define GICR_BASE_ADDRESS 0x080A0000UL
-#endif
 
 /**
  * the group and group modifier dictates the group routing
@@ -70,19 +57,9 @@ static inline uintptr_t gicr_rdist_base_addr(void) {
   return gicv3_rdist[curr_cpu_id()];
 }
 
-static inline uint32_t gicv3_mpidr_affinity(uint64_t mpidr) {
-  uint32_t aff0 = (uint32_t)(mpidr & 0xFFU);
-  uint32_t aff1 = (uint32_t)((mpidr >> 8) & 0xFFU);
-  uint32_t aff2 = (uint32_t)((mpidr >> 16) & 0xFFU);
-  uint32_t aff3 = (uint32_t)((mpidr >> 32) & 0xFFU);
-
-  return (aff3 << 24) | (aff2 << 16) | (aff1 << 8) | aff0;
-}
-
 static inline void set_irouter_curr_affinity(unsigned int int_id) {
-  uint64_t mpidr = sys_reg_bit_get(MPIDR_EL1, 0xff00ffffff);
-
-  mmio_write_u64(GICD_IROUTERn(gicv3_dist, int_id), mpidr);
+  uint64_t aff = curr_cpu_aff();
+  mmio_write_u64(GICD_IROUTERn(gicv3_dist, int_id), aff);
 }
 
 static inline void wait_rwp(uint32_t int_id) {
@@ -282,8 +259,26 @@ void gic_v3_int_set_priority_filter(uint8_t prio) {
   isb();
 }
 
-void gic_v3_raise_sgi(unsigned int sgi_id, uint64_t target_aff,
-                      uint16_t target_list) {}
+int gic_v3_raise_sgi(unsigned int sgi_id, uint64_t target_aff,
+                     uint16_t target_list) {
+  if (sgi_id > 15)
+    return -EINVAL;
+
+  uint8_t *aff = (uint8_t *)&target_aff;
+  uint64_t icc_sgi0 = target_list | ((uint64_t)aff[1] << 16) |
+                      ((uint64_t)sgi_id << 24) | ((uint64_t)aff[2] << 32) |
+                      ((uint64_t)aff[4] << 48);
+
+  sys_reg_write(ICC_SGI0R_EL1, icc_sgi0);
+
+  return 0;
+}
+
+int gic_v3_raise_sgi_self(unsigned int sgi_id) {
+  uint64_t target_aff = curr_cpu_aff() & ~(0xffull);
+  uint8_t cpu = curr_cpu_id();
+  return gic_v3_raise_sgi(sgi_id, target_aff, 1u << cpu);
+}
 
 void gic_v3_irq_handler(void) {
   uint64_t iar;

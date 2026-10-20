@@ -20,7 +20,7 @@
 #ifndef __ASSERT__H
 #define __ASSERT__H
 
-#define LIKELY(expr) (__builtin_expect(!!(expr), 1))
+#include "toolchain.h"
 
 #ifndef __assert_failed
 #define __assert_failed() while (1)

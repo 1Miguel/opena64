@@ -12,19 +12,28 @@
 
 #include <stdint.h>
 
-#define UARTDR(base)     ((uintptr_t)(base + 0x0000)) /* data register */
-#define UARTRSR(base)    ((uintptr_t)(base + 0x0004)) /* receive status register / error clear */
-#define UARTFR(base)     ((uintptr_t)(base + 0x0018)) /* flag register */
-#define UARTILPR(base)   ((uintptr_t)(base + 0x0020)) /* irDa low-power counter */
-#define UARTIBRD(base)   ((uintptr_t)(base + 0x0024)) /* integer baudrate */
-#define UARTFBRD(base)   ((uintptr_t)(base + 0x0028)) /* fractional baudrate */
-#define UARTLCR_H(base)  ((uintptr_t)(base + 0x002C)) /* line control register */
-#define UARTCR(base)     ((uintptr_t)(base + 0x0030)) /* control register */
-#define UARTIFLS(base)   ((uintptr_t)(base + 0x0034)) /* interrupt fifo level select */
-#define UARTIMSC(base)   ((uintptr_t)(base + 0x0038)) /* interrupt mask set/clear */
-#define UARTRIS(base)    ((uintptr_t)(base + 0x003C)) /* raw interrupt Status */
-#define UARTMIS(base)    ((uintptr_t)(base + 0x0040)) /* masked interrupt Status */
-#define UARTICR(base)    ((uintptr_t)(base + 0x0044)) /* interrupt Clear */
+#define UARTDR(base) ((uintptr_t)(base + 0x0000)) /* data register */
+#define UARTRSR(base)                                                          \
+  ((uintptr_t)(base + 0x0004)) /* receive status register / error clear */
+#define UARTFR(base) ((uintptr_t)(base + 0x0018)) /* flag register */
+#define UARTILPR(base)                                                         \
+  ((uintptr_t)(base + 0x0020))                      /* irDa low-power counter  \
+                                                     */
+#define UARTIBRD(base) ((uintptr_t)(base + 0x0024)) /* integer baudrate */
+#define UARTFBRD(base) ((uintptr_t)(base + 0x0028)) /* fractional baudrate */
+#define UARTLCR_H(base)                                                        \
+  ((uintptr_t)(base + 0x002C))                    /* line control register     \
+                                                   */
+#define UARTCR(base) ((uintptr_t)(base + 0x0030)) /* control register */
+#define UARTIFLS(base)                                                         \
+  ((uintptr_t)(base + 0x0034)) /* interrupt fifo level select */
+#define UARTIMSC(base)                                                         \
+  ((uintptr_t)(base + 0x0038)) /* interrupt mask set/clear */
+#define UARTRIS(base) ((uintptr_t)(base + 0x003C)) /* raw interrupt Status */
+#define UARTMIS(base)                                                          \
+  ((uintptr_t)(base + 0x0040))                     /* masked interrupt Status  \
+                                                    */
+#define UARTICR(base) ((uintptr_t)(base + 0x0044)) /* interrupt Clear */
 #define UARTIDMACR(base) ((uintptr_t)(base + 0x0048)) /* dma Control */
 
 /* ============================================================================
@@ -116,7 +125,8 @@
  * ========================================================================== */
 
 #define UART_PL011_ILPR_ILPDVSR_BIT_POS (0U)
-#define UART_PL011_ILPR_ILPDVSR_BIT_MSK (0xFFU << UART_PL011_ILPR_ILPDVSR_BIT_POS)
+#define UART_PL011_ILPR_ILPDVSR_BIT_MSK                                        \
+  (0xFFU << UART_PL011_ILPR_ILPDVSR_BIT_POS)
 #define UART_PL011_ILPR_ILPDVSR_RST_VAL (0x00U)
 
 /* ============================================================================
@@ -124,7 +134,8 @@
  * ========================================================================== */
 
 #define UART_PL011_IBRD_BAUD_DIVINT_BIT_POS (0U)
-#define UART_PL011_IBRD_BAUD_DIVINT_BIT_MSK (0xFFFFU << UART_PL011_IBRD_BAUD_DIVINT_BIT_POS)
+#define UART_PL011_IBRD_BAUD_DIVINT_BIT_MSK                                    \
+  (0xFFFFU << UART_PL011_IBRD_BAUD_DIVINT_BIT_POS)
 #define UART_PL011_IBRD_BAUD_DIVINT_RST_VAL (0x0000U)
 
 /* ============================================================================
@@ -132,7 +143,8 @@
  * ========================================================================== */
 
 #define UART_PL011_FBRD_BAUD_DIVFRAC_BIT_POS (0U)
-#define UART_PL011_FBRD_BAUD_DIVFRAC_BIT_MSK (0x3FU << UART_PL011_FBRD_BAUD_DIVFRAC_BIT_POS)
+#define UART_PL011_FBRD_BAUD_DIVFRAC_BIT_MSK                                   \
+  (0x3FU << UART_PL011_FBRD_BAUD_DIVFRAC_BIT_POS)
 #define UART_PL011_FBRD_BAUD_DIVFRAC_RST_VAL (0x00U)
 
 /* ============================================================================
@@ -224,11 +236,13 @@
  * ========================================================================== */
 
 #define UART_PL011_IFLS_TXIFLSEL_BIT_POS (0U)
-#define UART_PL011_IFLS_TXIFLSEL_BIT_MSK (7U << UART_PL011_IFLS_TXIFLSEL_BIT_POS)
+#define UART_PL011_IFLS_TXIFLSEL_BIT_MSK                                       \
+  (7U << UART_PL011_IFLS_TXIFLSEL_BIT_POS)
 #define UART_PL011_IFLS_TXIFLSEL_RST_VAL (0x02U)
 
 #define UART_PL011_IFLS_RXIFLSEL_BIT_POS (3U)
-#define UART_PL011_IFLS_RXIFLSEL_BIT_MSK (7U << UART_PL011_IFLS_RXIFLSEL_BIT_POS)
+#define UART_PL011_IFLS_RXIFLSEL_BIT_MSK                                       \
+  (7U << UART_PL011_IFLS_RXIFLSEL_BIT_POS)
 #define UART_PL011_IFLS_RXIFLSEL_RST_VAL (0x02U)
 
 /* ============================================================================
@@ -436,7 +450,8 @@
 #define UART_PL011_DMACR_TXDMAE_RST_VAL (0x00U)
 
 #define UART_PL011_DMACR_DMAONERR_BIT_POS (2U)
-#define UART_PL011_DMACR_DMAONERR_BIT_MSK (1U << UART_PL011_DMACR_DMAONERR_BIT_POS)
+#define UART_PL011_DMACR_DMAONERR_BIT_MSK                                      \
+  (1U << UART_PL011_DMACR_DMAONERR_BIT_POS)
 #define UART_PL011_DMACR_DMAONERR_RST_VAL (0x00U)
 
 #endif // UART_Pl011_REGS__H

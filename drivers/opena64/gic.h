@@ -14,7 +14,8 @@ extern "C" {
 #endif // __cplusplus
 
 /**
- * @brief Initializes the distributor, current PE redistributor, and CPU interface.
+ * @brief Initializes the distributor, current PE redistributor, and CPU
+ * interface.
  */
 void gic_v3_init(void);
 
@@ -78,10 +79,13 @@ void gic_v3_int_set_priority(unsigned int int_id, uint8_t priority);
  *
  * @param sgi_id SGI ID in the range 0-15.
  * @param target_aff Target MPIDR affinity value; Aff0[7:4] selects the range.
- * @param target_list Bit mask selecting Aff0[3:0] targets in the affinity group.
- * @return False when the driver is not initialized or the arguments are invalid.
+ * @param target_list Bit mask selecting Aff0[3:0] targets in the affinity
+ * group.
+ * @return False when the driver is not initialized or the arguments are
+ * invalid.
  */
-void gic_v3_raise_sgi(unsigned int sgi_id, uint64_t target_aff, uint16_t target_list);
+void gic_v3_raise_sgi(unsigned int sgi_id, uint64_t target_aff,
+                      uint16_t target_list);
 
 #ifdef __cplusplus
 }

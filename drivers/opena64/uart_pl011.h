@@ -17,10 +17,10 @@ extern "C" {
 struct uart_pl011;
 
 enum uart_pl011_err_msk {
-	UART_PL011_INT_STATUS_FR_ERR = 1U << 7,
-	UART_PL011_INT_STATUS_PARITY_ERR = 1U << 8,
-	UART_PL011_INT_STATUS_BRK_ERR = 1U << 9,
-	UART_PL011_INT_STATUS_OVR_ERR = 1U << 10,
+  UART_PL011_INT_STATUS_FR_ERR = 1U << 7,
+  UART_PL011_INT_STATUS_PARITY_ERR = 1U << 8,
+  UART_PL011_INT_STATUS_BRK_ERR = 1U << 9,
+  UART_PL011_INT_STATUS_OVR_ERR = 1U << 10,
 };
 
 /**
@@ -28,11 +28,11 @@ enum uart_pl011_err_msk {
  *
  */
 enum uart_pl011_config_data_bits {
-	UART_CFG_DATA_BITS_5 = 0U,
-	UART_CFG_DATA_BITS_6 = 1U,
-	UART_CFG_DATA_BITS_7 = 2U,
-	UART_CFG_DATA_BITS_8 = 3U,
-	UART_CFG_DATA_BITS_9 = 4U,
+  UART_CFG_DATA_BITS_5 = 0U,
+  UART_CFG_DATA_BITS_6 = 1U,
+  UART_CFG_DATA_BITS_7 = 2U,
+  UART_CFG_DATA_BITS_8 = 3U,
+  UART_CFG_DATA_BITS_9 = 4U,
 };
 
 /**
@@ -40,8 +40,8 @@ enum uart_pl011_config_data_bits {
  *
  */
 enum uart_pl011_config_stop_bits {
-	UART_CFG_STOP_1_BIT = 0U,
-	UART_CFG_STOP_2_BIT = 1U,
+  UART_CFG_STOP_1_BIT = 0U,
+  UART_CFG_STOP_2_BIT = 1U,
 };
 
 /**
@@ -49,11 +49,11 @@ enum uart_pl011_config_stop_bits {
  *
  */
 struct uart_pl011_cfg {
-	uint32_t baudrate;
-	uint8_t parity;
-	uint8_t stop_bits;
-	uint8_t data_bits;
-	uint8_t flow_ctrl;
+  uint32_t baudrate;
+  uint8_t parity;
+  uint8_t stop_bits;
+  uint8_t data_bits;
+  uint8_t flow_ctrl;
 };
 
 /**
@@ -71,9 +71,9 @@ typedef void (*uart_pl011_irq_cb_t)(struct uart_pl011 *, void *);
  *
  */
 struct uart_pl011 {
-	uintptr_t reg;              /*!< address to pl011 registers */
-	uart_pl011_irq_cb_t irq_cb; /*!< interrupt callback function */
-	void *irq_cb_data;          /*!< user data to pass to interrupt callback */
+  uintptr_t reg;              /*!< address to pl011 registers */
+  uart_pl011_irq_cb_t irq_cb; /*!< interrupt callback function */
+  void *irq_cb_data;          /*!< user data to pass to interrupt callback */
 };
 
 /**
@@ -89,20 +89,21 @@ struct uart_pl011 {
  * @param _name name of struct var
  * @param _reg  register base address (uintptr_t)
  */
-#define UART_PL011_DECLARE(_name, _reg) struct uart_pl011 _name = UART_PL011_INIT(_reg)
+#define UART_PL011_DECLARE(_name, _reg)                                        \
+  struct uart_pl011 _name = UART_PL011_INIT(_reg)
 
 /**
  * @brief Default UART configuration.
  *
  */
-#define UART_PL011_DEFAULT_CFG                                                                     \
-	{                                                                                          \
-		.baudrate = 115200,                                                                \
-		.parity = 0,                                                                       \
-		.stop_bits = UART_CFG_STOP_1_BIT,                                                  \
-		.data_bits = UART_CFG_DATA_BITS_8,                                                 \
-		.flow_ctrl = 0,                                                                    \
-	}
+#define UART_PL011_DEFAULT_CFG                                                 \
+  {                                                                            \
+      .baudrate = 115200,                                                      \
+      .parity = 0,                                                             \
+      .stop_bits = UART_CFG_STOP_1_BIT,                                        \
+      .data_bits = UART_CFG_DATA_BITS_8,                                       \
+      .flow_ctrl = 0,                                                          \
+  }
 
 /**
  * @brief Initialise the uart configuration.
@@ -127,7 +128,8 @@ int uart_pl011_init(struct uart_pl011 *uart, struct uart_pl011_cfg *cfg);
  * @retval -EINVAL invalid args.
  * @retval -eret other errors.
  */
-int uart_pl011_set_irq_cb(struct uart_pl011 *uart, uart_pl011_irq_cb_t cb, void *cb_data);
+int uart_pl011_set_irq_cb(struct uart_pl011 *uart, uart_pl011_irq_cb_t cb,
+                          void *cb_data);
 
 /**
  * @brief Enable the PL011 uart peripheral block.
@@ -173,21 +175,63 @@ char uart_pl011_poll_in(struct uart_pl011 *uart);
 int uart_pl011_poll_out(struct uart_pl011 *uart, uint8_t c);
 
 /**
- * @brief Enable interrupts based on given mask.
+ * @brief Enable transmit interrut.
  *
  * @param[in] uart pointer to uart instance.
- * @param     irq_msk interrupt mask to enable.
  *
  * @retval 0 at success
  * @retval -EINVAL invalid args.
  */
 int uart_pl011_tx_irq_enable(struct uart_pl011 *uart);
+
+/**
+ * @brief Disable transmit interrut.
+ *
+ * @param[in] uart pointer to uart instance.
+ *
+ * @retval 0 at success
+ * @retval -EINVAL invalid args.
+ */
 int uart_pl011_tx_irq_disable(struct uart_pl011 *uart);
 
+/**
+ * @brief Enable receive interrut.
+ *
+ * @param[in] uart pointer to uart instance.
+ *
+ * @retval 0 at success
+ * @retval -EINVAL invalid args.
+ */
 int uart_pl011_rx_irq_enable(struct uart_pl011 *uart);
+
+/**
+ * @brief Disable receive interrut.
+ *
+ * @param[in] uart pointer to uart instance.
+ *
+ * @retval 0 at success
+ * @retval -EINVAL invalid args.
+ */
 int uart_pl011_rx_irq_disable(struct uart_pl011 *uart);
 
+/**
+ * @brief Enable error interrut.
+ *
+ * @param[in] uart pointer to uart instance.
+ *
+ * @retval 0 at success
+ * @retval -EINVAL invalid args.
+ */
 int uart_pl011_err_irq_enable(struct uart_pl011 *uart);
+
+/**
+ * @brief Disable error interrut.
+ *
+ * @param[in] uart pointer to uart instance.
+ *
+ * @retval 0 at success
+ * @retval -EINVAL invalid args.
+ */
 int uart_pl011_err_irq_disable(struct uart_pl011 *uart);
 
 /**

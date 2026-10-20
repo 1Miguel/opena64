@@ -20,7 +20,7 @@ extern "C" {
  * @brief MMIO api's
  */
 
-#define EA_BIT  (1U << 3)
+#define EA_BIT (1U << 3)
 #define IRQ_BIT (1U << 1)
 #define FIQ_BIT (1U << 2)
 
@@ -31,12 +31,12 @@ extern "C" {
  *
  * @return Value read from the system register.
  */
-#define __MRS(reg)                                                                                 \
-	({                                                                                         \
-		uint64_t __val;                                                                    \
-		__asm__ volatile("mrs %0, " #reg : "=r"(__val));                                   \
-		__val;                                                                             \
-	})
+#define __MRS(reg)                                                             \
+  ({                                                                           \
+    uint64_t __val;                                                            \
+    __asm__ volatile("mrs %0, " #reg : "=r"(__val));                           \
+    __val;                                                                     \
+  })
 
 /**
  * @brief Writes a value to an AArch64 system register.
@@ -44,55 +44,46 @@ extern "C" {
  * @param reg System register name.
  * @param val Value to write.
  */
-#define __MSR(reg, val)                                                                            \
-	{                                                                                          \
-		__asm__ volatile("msr " #reg ", %0" : : "r"(val) : "memory");                      \
-	}
+#define __MSR(reg, val)                                                        \
+  {                                                                            \
+    __asm__ volatile("msr " #reg ", %0" : : "r"(val) : "memory");              \
+  }
 
 /**
  * @brief Executes a Secure Monitor Call with an immediate value.
  *
  * @param imm Immediate value passed to the SMC instruction.
  */
-#define smc(imm)                                                                                   \
-	{                                                                                          \
-		__asm__ volatile("smc #" #imm::: "memory");                                        \
-	}
+#define smc(imm)                                                               \
+  {                                                                            \
+    __asm__ volatile("smc #" #imm::: "memory");                                \
+  }
 
 /**
  * @brief Executes a Supervisory Call with an immediate value.
  *
  * @param imm Immediate value passed to the SVC instruction.
  */
-#define svc(imm)                                                                                   \
-	{                                                                                          \
-		__asm__ volatile("svc #" #imm::: "memory");                                        \
-	}
+#define svc(imm)                                                               \
+  {                                                                            \
+    __asm__ volatile("svc #" #imm::: "memory");                                \
+  }
 
-#define __SYS_REG_FUNC_RO(reg)                                                                     \
-	static inline uint64_t sys_reg_##reg##_read(void)                                          \
-	{                                                                                          \
-		return __MRS(reg);                                                                 \
-	}                                                                                          \
-	static inline uint64_t sys_reg_##reg##_bit_get(uint64_t bit_msk)                           \
-	{                                                                                          \
-		return sys_reg_##reg##_read() & bit_msk;                                           \
-	}
+#define __SYS_REG_FUNC_RO(reg)                                                 \
+  static inline uint64_t sys_reg_##reg##_read(void) { return __MRS(reg); }     \
+  static inline uint64_t sys_reg_##reg##_bit_get(uint64_t bit_msk) {           \
+    return sys_reg_##reg##_read() & bit_msk;                                   \
+  }
 
-#define __SYS_REG_FUNC(reg)                                                                        \
-	__SYS_REG_FUNC_RO(reg)                                                                     \
-	static inline void sys_reg_##reg##_write(uint64_t val)                                     \
-	{                                                                                          \
-		__MSR(reg, val);                                                                   \
-	}                                                                                          \
-	static inline void sys_reg_##reg##_bit_set(uint64_t bit_msk)                               \
-	{                                                                                          \
-		sys_reg_##reg##_write(sys_reg_##reg##_read() | bit_msk);                           \
-	}                                                                                          \
-	static inline void sys_reg_##reg##_bit_clr(uint64_t bit_msk)                               \
-	{                                                                                          \
-		sys_reg_##reg##_write(sys_reg_##reg##_read() & (~bit_msk));                        \
-	}
+#define __SYS_REG_FUNC(reg)                                                    \
+  __SYS_REG_FUNC_RO(reg)                                                       \
+  static inline void sys_reg_##reg##_write(uint64_t val) { __MSR(reg, val); }  \
+  static inline void sys_reg_##reg##_bit_set(uint64_t bit_msk) {               \
+    sys_reg_##reg##_write(sys_reg_##reg##_read() | bit_msk);                   \
+  }                                                                            \
+  static inline void sys_reg_##reg##_bit_clr(uint64_t bit_msk) {               \
+    sys_reg_##reg##_write(sys_reg_##reg##_read() & (~bit_msk));                \
+  }
 
 __SYS_REG_FUNC(currentEL)
 __SYS_REG_FUNC(SCR_EL3)
@@ -164,27 +155,20 @@ __SYS_REG_FUNC_RO(CNTFRQ_EL0)
 /**
  * @brief Enables IRQ routing to EL3 by setting the SCR_EL3.IRQ bit.
  */
-static inline void irq_enable_el3(void)
-{
-	sys_reg_bit_set(SCR_EL3, IRQ_BIT);
-}
+static inline void irq_enable_el3(void) { sys_reg_bit_set(SCR_EL3, IRQ_BIT); }
 
 /**
  * @brief Disables IRQ routing to EL3 by clearing the SCR_EL3.IRQ bit.
  */
-static inline void irq_disable_el3(void)
-{
-	sys_reg_bit_clr(SCR_EL3, IRQ_BIT);
-}
+static inline void irq_disable_el3(void) { sys_reg_bit_clr(SCR_EL3, IRQ_BIT); }
 
 /**
  * @brief Get the current cpu id.
  *
  * @return Current cpu id.
  */
-static inline uint8_t curr_cpu_id(void)
-{
-	return sys_reg_bit_get(MPIDR_EL1, 0xFF);
+static inline uint8_t curr_cpu_id(void) {
+  return sys_reg_bit_get(MPIDR_EL1, 0xFF);
 }
 
 /**
@@ -192,10 +176,9 @@ static inline uint8_t curr_cpu_id(void)
  *
  * @return Current exception level.
  */
-static inline uint8_t curr_exc_lvl(void)
-{
-	uint64_t curr_el = sys_reg_read(currentEL);
-	return curr_el >> 2;
+static inline uint8_t curr_exc_lvl(void) {
+  uint64_t curr_el = sys_reg_read(currentEL);
+  return curr_el >> 2;
 }
 
 #ifdef __cplusplus

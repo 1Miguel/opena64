@@ -6,11 +6,11 @@ CLANG_FORMAT := clang-format
 
 # list of file that will be clang formatted
 CLANG_FORMAT_DIR := \
-	$(MAKEFILE_DIR)/bsp/aarch64 \
-	$(MAKEFILE_DIR)/bsp/aarch32 \
-	$(MAKEFILE_DIR)/drivers \
-	$(MAKEFILE_DIR)/drivers/gic \
-	$(MAKEFILE_DIR)/src
+	$(MAKEFILE_DIR)/bsp/a53_renode \
+	$(MAKEFILE_DIR)/drivers/opena64 \
+	$(MAKEFILE_DIR)/examples/hello_world \
+	$(MAKEFILE_DIR)/examples/periodic_timer \
+	$(MAKEFILE_DIR)/examples/unity_test
 
 .PHONY: clang_format
 

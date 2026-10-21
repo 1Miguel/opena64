@@ -35,4 +35,5 @@
  * @brief macro wrapper for __asm__.
  */
 #define __asm __asm__
+
 /**@}*/

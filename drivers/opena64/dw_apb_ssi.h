@@ -22,7 +22,7 @@ extern "C" {
  * @note	None.
  *
  * modification history:
- *  1. mugsimar, 01/20/15
+ *  1. mugsimar, oct 20 2026
  *    > Initial version. No support for interrupts yet.
  */
 

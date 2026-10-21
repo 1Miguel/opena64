@@ -31,4 +31,8 @@
  */
 #define ARG_UNUSED(_arg) ((void)_arg)
 
+/**
+ * @brief macro wrapper for __asm__.
+ */
+#define __asm __asm__
 /**@}*/

@@ -32,6 +32,58 @@ define info_cntp
   info registers CNTFRQ_EL0 CNTP_CTL_EL0 CNTP_TVAL_EL0 CNTP_CVAL_EL0
 end
 
+define dw_apb_ssi_regs
+    if $argc == 0
+        set $ssi_base = 0x09020000
+    else
+        set $ssi_base = $arg0
+    end
+    printf "DW APB SSI registers at 0x%lx\n", $ssi_base
+    printf "CTRLR0: "
+    x/wx ($ssi_base + 0x00)
+    printf "CTRLR1: "
+    x/wx ($ssi_base + 0x04)
+    printf "SSIENR: "
+    x/wx ($ssi_base + 0x08)
+    printf "MWCR:   "
+    x/wx ($ssi_base + 0x0c)
+    printf "SER:    "
+    x/wx ($ssi_base + 0x10)
+    printf "BAUDR:  "
+    x/wx ($ssi_base + 0x14)
+    printf "TXFTLR: "
+    x/wx ($ssi_base + 0x18)
+    printf "RXFTLR: "
+    x/wx ($ssi_base + 0x1c)
+    printf "TXFLR:  "
+    x/wx ($ssi_base + 0x20)
+    printf "RXFLR:  "
+    x/wx ($ssi_base + 0x24)
+    printf "SR:     "
+    x/wx ($ssi_base + 0x28)
+    printf "IMR:    "
+    x/wx ($ssi_base + 0x2c)
+    printf "ISR:    "
+    x/wx ($ssi_base + 0x30)
+    printf "RISR:   "
+    x/wx ($ssi_base + 0x34)
+    printf "DMACR:  "
+    x/wx ($ssi_base + 0x4c)
+    printf "IDR:    "
+    x/wx ($ssi_base + 0x58)
+    printf "VERSION:"
+    x/wx ($ssi_base + 0x5c)
+    printf "RX_SAMPLE_DLY: "
+    x/wx ($ssi_base + 0xf0)
+    printf "SPI_CTRLR0:    "
+    x/wx ($ssi_base + 0xf4)
+end
+
+define dw_apb_ssi_regs_TXFLR
+    printf "TXFLR:  "
+    x/wx ($ssi_base + 0x20)
+end
+
 define gic_spi
     set $irq_id = $arg0
     if $irq_id < 32 || $irq_id > 1019
@@ -63,5 +115,5 @@ delete
 
 machine_reset
 
-b _reset
 b main
+b dw_apb_ssi.c:179

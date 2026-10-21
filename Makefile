@@ -10,6 +10,7 @@ CLANG_FORMAT_DIR := \
 	$(MAKEFILE_DIR)/drivers/opena64 \
 	$(MAKEFILE_DIR)/examples/hello_world \
 	$(MAKEFILE_DIR)/examples/periodic_timer \
+	$(MAKEFILE_DIR)/examples/ssi \
 	$(MAKEFILE_DIR)/examples/unity_test
 
 .PHONY: clang_format

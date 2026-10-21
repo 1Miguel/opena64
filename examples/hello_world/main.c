@@ -16,25 +16,27 @@
 /* UART base address used by the a53_renode platform. */
 #define UART0 (0x09000000)
 
-int main(void) {
-  char *msg = "hello world!";
+int main(void)
+{
+	char *msg = "hello world!";
 
-  /* Bind the PL011 driver instance to the platform's UART registers. */
-  struct uart_pl011 uart_dev = UART_PL011_INIT(UART0);
-  struct uart_pl011_cfg uart_cfg = UART_PL011_DEFAULT_CFG;
+	/* Bind the PL011 driver instance to the platform's UART registers. */
+	struct uart_pl011 uart_dev = UART_PL011_INIT(UART0);
+	struct uart_pl011_cfg uart_cfg = UART_PL011_DEFAULT_CFG;
 
-  /* Configure and enable the UART before sending data. */
-  uart_pl011_init(&uart_dev, &uart_cfg);
-  uart_pl011_enable(&uart_dev);
+	/* Configure and enable the UART before sending data. */
+	uart_pl011_init(&uart_dev, &uart_cfg);
+	uart_pl011_enable(&uart_dev);
 
-  /* Poll the transmitter one character at a time until the string ends. */
-  char *p = msg;
+	/* Poll the transmitter one character at a time until the string ends. */
+	char *p = msg;
 
-  while (*p)
-    uart_pl011_poll_out(&uart_dev, *p++);
+	while (*p) {
+		uart_pl011_poll_out(&uart_dev, *p++);
+	}
 
-  /* No more output is needed, so turn off the UART before returning. */
-  uart_pl011_disable(&uart_dev);
+	/* No more output is needed, so turn off the UART before returning. */
+	uart_pl011_disable(&uart_dev);
 
-  return 0;
+	return 0;
 }

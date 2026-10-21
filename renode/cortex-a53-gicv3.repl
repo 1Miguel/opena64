@@ -34,3 +34,18 @@ uart0: UART.PL011 @ sysbus 0x09000000
 
 rtc: Timers.PL031 @ sysbus 0x09010000
     -> gic@2
+
+spi0: SPI.DesignWare_SPI @ sysbus 0x09020000
+    transmitDepth: 32
+    receiveDepth: 32
+    -> gic@3
+
+// 32MiB flash backend memory
+ext_flash_mem: Memory.MappedMemory
+    size: 0x02000000
+
+spi1: SPI.GenericSpiFlash @ spi0 1
+    underlyingMemory: ext_flash_mem
+    manufacturerId: 0x52
+    memoryType: 0x8F
+

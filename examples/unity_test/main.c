@@ -22,38 +22,45 @@
 static struct uart_pl011 uart_dev = UART_PL011_INIT(UART0);
 
 /* Route the C library's stdout writes through the PL011 polling transmitter. */
-int _write(int file, char *ptr, int len) {
-  (void)(file); // unused
-  int i;
-  for (i = 0; i < len; i++) {
-    uart_pl011_poll_out(&uart_dev, (*ptr++));
-  }
-  return i;
+int _write(int file, char *ptr, int len)
+{
+	(void)(file); // unused
+	int i;
+	for (i = 0; i < len; i++) {
+		uart_pl011_poll_out(&uart_dev, (*ptr++));
+	}
+	return i;
 }
 
-void setUp(void) {
-  /* Unity calls this before each test; add per-test initialization here. */
+void setUp(void)
+{
+	/* Unity calls this before each test; add per-test initialization here. */
 }
 
-void tearDown(void) {
-  /* Unity calls this after each test; add per-test cleanup here. */
+void tearDown(void)
+{
+	/* Unity calls this after each test; add per-test cleanup here. */
 }
 
 /* A placeholder test showing where test cases and assertions belong. */
-void test_sample(void) { printf("Sample test!\n\r"); }
+void test_sample(void)
+{
+	printf("Sample test!\n\r");
+}
 
-int main(void) {
-  struct uart_pl011_cfg uart_cfg = UART_PL011_DEFAULT_CFG;
+int main(void)
+{
+	struct uart_pl011_cfg uart_cfg = UART_PL011_DEFAULT_CFG;
 
-  /* Initialize UART first so Unity's test results can be sent to the console.
-   */
-  uart_pl011_init(&uart_dev, &uart_cfg);
-  uart_pl011_enable(&uart_dev);
+	/* Initialize UART first so Unity's test results can be sent to the console.
+	 */
+	uart_pl011_init(&uart_dev, &uart_cfg);
+	uart_pl011_enable(&uart_dev);
 
-  /* Initialize Unity, execute the registered test, and return its result. */
-  UNITY_BEGIN();
-  RUN_TEST(test_sample);
+	/* Initialize Unity, execute the registered test, and return its result. */
+	UNITY_BEGIN();
+	RUN_TEST(test_sample);
 
-  uart_pl011_disable(&uart_dev);
-  return UNITY_END();
+	uart_pl011_disable(&uart_dev);
+	return UNITY_END();
 }

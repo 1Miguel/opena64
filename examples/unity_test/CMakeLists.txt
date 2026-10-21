@@ -27,7 +27,6 @@ FetchContent_Declare(
   GIT_TAG 5111c61e1ef7848e3afd3550044a8cf4405f4199
 )
 
-
 FetchContent_GetProperties(fff)
 if(NOT fff_POPULATED)
   FetchContent_Populate(fff)

@@ -26,14 +26,14 @@
 #define __assert_failed() while (1)
 #endif
 
-#define __ASSERT(cond)                                                         \
-  do {                                                                         \
-    if (LIKELY((cond))) {                                                      \
-      (void)0;                                                                 \
-    } else {                                                                   \
-      __assert_failed();                                                       \
-    }                                                                          \
-  } while (0)
+#define __ASSERT(cond)                                                                             \
+	do {                                                                                       \
+		if (LIKELY((cond))) {                                                              \
+			(void)0;                                                                   \
+		} else {                                                                           \
+			__assert_failed();                                                         \
+		}                                                                                  \
+	} while (0)
 
 #endif // __ASSERT__H
 

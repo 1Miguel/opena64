@@ -14,7 +14,14 @@
  *
  * @version 1.0.0
  *
- * @date Oct 20 2026
+ * modification history:
+ *  1. mugsimar, oct 10, 2026
+ *    > First version, only supports routing to EL1 non-secure.
+ *    > no support for EL1 secure or EL3. Requires the GICD_CTLR.DS
+ *      to be set to 1, which disables security access.
+ *
+ *  2. mugsimar, oct 20, 2026
+ *    > add support for SGI
  */
 
 #ifndef __GIC__H
@@ -98,8 +105,7 @@ void gic_v3_int_set_priority(unsigned int int_id, uint8_t priority);
  *
  * @return -EINVAL if sgi_id is invalid.
  */
-int gic_v3_raise_sgi(unsigned int sgi_id, uint64_t target_aff,
-                     uint16_t target_list);
+int gic_v3_raise_sgi(unsigned int sgi_id, uint64_t target_aff, uint16_t target_list);
 
 /**
  * @brief Sends an SGI to self.

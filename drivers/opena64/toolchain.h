@@ -34,6 +34,31 @@
 /**
  * @brief macro wrapper for __asm__.
  */
+#ifndef __asm
 #define __asm __asm__
+#endif
+
+/**
+ * @brief Weak attribute.
+ */
+#ifndef __weak
+#define __weak __attribute__((__weak__))
+#endif
+
+/**
+ * @brief macro wrapper to compiler specific hints for indicating
+ *  unreachable codes.
+ */
+#ifndef __code_unreachable
+#define __code_unreachable __builtin_unreachable();
+#endif
+
+/**
+ * @brief counts the number of 1-bits (set bits) in an integer's
+ *    binary representation.
+ */
+#ifndef __popcount
+#define __popcount(x) __builtin_popcount(x)
+#endif
 
 /**@}*/

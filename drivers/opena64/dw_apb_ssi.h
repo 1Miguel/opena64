@@ -200,6 +200,9 @@ int dw_apb_ssi_set_irq_cb(struct dw_apb_ssi *ssi, dw_apb_ssi_cb_t cb, void *cb_d
 /**
  * @brief Write up to @p len bytes to the SSI transmit FIFO.
  *
+ * @note This is expected to be called on IRQ callback ONLY.
+ * behaviour is unknown when called at sync code.
+ *
  * @param[in] ssi SSI controller instance.
  * @param[in] buf Data to transmit; NULL requests zero-valued data words.
  * @param[in] len Maximum number of bytes to write.
@@ -213,9 +216,12 @@ int dw_apb_ssi_tx_fifo_u8(struct dw_apb_ssi *ssi, uint8_t *buf, uint16_t len);
 /**
  * @brief Read up to @p len bytes from the SSI receive FIFO.
  *
- * @param[in] ssi SSI controller instance.
+ * @note This is expected to be called on IRQ callback ONLY.
+ * behaviour is unknown when called at sync code.
+ *
+ * @param[in]  ssi SSI controller instance.
  * @param[out] buf Destination buffer; NULL discards received data.
- * @param[in] len Maximum number of bytes to read.
+ * @param[in]  len Maximum number of bytes to read.
  *
  * @return Number of bytes copied to @p buf
  * @retval 0 if @p buf is null
@@ -240,16 +246,28 @@ int dw_apb_ssi_tx_rx_poll_u8(struct dw_apb_ssi *ssi, uint8_t *tx_buf, uint8_t *r
 			     uint16_t len);
 
 /**
- * @brief Perform a blocking, polling transmit-only operation.
+ * @brief Start the async/irq-based spi transmit receive.
  *
- * @param[in] ssi SSI controller instance.
- * @param[in] buf Transmit data.
- * @param[in] len Number of bytes to transmit.
+ * @param[in]  ssi SSI controller instance.
+ * @param[in]  tx_buf Transmit data, or NULL when not transmitting.
+ * @param[in]  len Number of bytes to transfer.
  *
- * @retval 0 on success.
+ * @retval 0 on success
  * @retval -errno at error.
  */
-static inline int dw_apb_ssi_tx_poll_u8(struct dw_apb_ssi *ssi, uint8_t *buf, uint16_t len)
+int dw_apb_ssi_tx_rx_async_u8(struct dw_apb_ssi *ssi, uint8_t *tx_buf, uint16_t len)
+
+	/**
+	 * @brief Perform a blocking, polling transmit-only operation.
+	 *
+	 * @param[in] ssi SSI controller instance.
+	 * @param[in] buf Transmit data.
+	 * @param[in] len Number of bytes to transmit.
+	 *
+	 * @retval 0 on success.
+	 * @retval -errno at error.
+	 */
+	static inline int dw_apb_ssi_tx_poll_u8(struct dw_apb_ssi *ssi, uint8_t *buf, uint16_t len)
 {
 	return dw_apb_ssi_tx_rx_poll_u8(ssi, buf, NULL, len);
 }

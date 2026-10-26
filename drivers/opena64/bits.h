@@ -7,7 +7,7 @@
 #define __BITS__H
 
 /** @brief bit set based on bit position */
-#define BIT(n)  (1UL << (n))
+#define BIT(n) (1UL << (n))
 
 /** @brief bit set 64-bit */
 #define BIT64(_n) (1ULL << (_n))

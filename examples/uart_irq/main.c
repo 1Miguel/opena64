@@ -15,7 +15,10 @@
 #define UART0 (0x09000000)
 
 /* Shared by the callback so it can report each timer tick over UART. */
+/* 48-bytes */
 static struct uart_pl011 uart_dev = UART_PL011_INIT(UART0);
+/* 12-bytes */
+static const char v[] = "hello world";
 
 /* Route the C library's stdout writes through the PL011 polling transmitter. */
 int _write(int file, char *ptr, int len) {
@@ -64,11 +67,10 @@ int main(void) {
   /* Initialize UART so the callback can report each
    * timer expiration. */
   struct uart_pl011_cfg uart_cfg = UART_PL011_DEFAULT_CFG;
+
   uart_pl011_init(&uart_dev, &uart_cfg);
   uart_pl011_enable(&uart_dev);
   uart_pl011_set_irq_cb(&uart_dev, uart_cb, NULL);
-  // this is a cli loopback test, we dont need a tx done
-  // uart_pl011_tx_irq_enable(&uart_dev);
 
   printf("user start typing in terminal\n\r");
 

@@ -120,6 +120,10 @@ int dw_apb_ssi_tx_fifo_u8(struct dw_apb_ssi *ssi, uint8_t *buf, uint16_t len)
 		n++;
 	}
 
+	if (n) {
+		ssi_slave_sel(ssi, ssi->cfg->cs_sel);
+	}
+
 	return n;
 }
 
@@ -153,6 +157,33 @@ int dw_apb_ssi_rx_fifo_u8(struct dw_apb_ssi *ssi, uint8_t *buf, uint16_t len)
 static inline void set_num_frames(struct dw_apb_ssi *ssi, uint16_t n_fr)
 {
 	mmio_write_u16(DW_APB_SSI_CTRLR1_OFFSET(ssi->reg), n_fr - 1);
+}
+
+int dw_apb_ssi_tx_rx_async_u8(struct dw_apb_ssi *ssi, uint8_t *tx_buf, uint16_t len)
+{
+	uint16_t n = 0;
+
+	if (!ssi && !tx_buf && !rx_buf) {
+		return -EINVAL;
+	}
+
+	if (!is_tx_fifo_ready(ssi) || is_busy(ssi)) {
+		return -EBUSY;
+	}
+
+	ssi_disable(ssi);
+	set_transfer_mode(ssi, DW_APB_SSI_CTRLR0_TMOD_TX_RX);
+	ssi_enable(ssi);
+	n = dw_apb_ssi_tx_fifo_u8(ssi, tx_buf, len);
+	ssi_slave_sel(ssi, ssi->cfg->cs_sel);
+
+	return n;
+}
+
+int dw_apb_ssi_tx_async_stop(struct dw_apb_ssi *ssi)
+{
+	ssi_slave_sel(ssi, 0);
+	ssi_disable(ssi);
 }
 
 int dw_apb_ssi_tx_rx_poll_u8(struct dw_apb_ssi *ssi, uint8_t *tx_buf, uint8_t *rx_buf, uint16_t len)

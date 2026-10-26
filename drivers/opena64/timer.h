@@ -3,8 +3,8 @@
  *
  * SPDX-License-Identifier: MIT
  *******************************************************************************/
-#ifndef TIMER__H
-#define TIMER__H
+#ifndef __TIMER__H
+#define __TIMER__H
 
 #include <stdint.h>
 
@@ -13,77 +13,101 @@ extern "C" {
 #endif
 
 /**
- * @defgroup gtimer api's
+ * @defgroup timer ARM generic timer API
  * @{
  *
- * @ingroup gtimer
- *
- * @brief ARM generic timer.
+ * @brief API for configuring and querying the ARM Generic Timer.
  */
 
 /**
- * @brief Timer timeout callback function type.
+ * @brief Timer interrupt callback type.
  *
- * @param[out] user callback data.
- *
+ * @param[in] cb_data User-provided callback context passed to the interrupt handler.
  */
 typedef void (*timer_irq_cb_t)(void *cb_data);
 
 /**
- * @brief Set interrupt callback function and data.
+ * @brief Installs the timer interrupt callback and its context.
  *
- * @param[in] irq_cb  interrupt callback function pointer.
- * @param[in] cb_data pointer to callback data to pass to function.
- *
+ * @param[in] irq_cb Interrupt callback function pointer.
+ * @param[in] cb_data Pointer to user data passed to the callback.
  */
 void timer_set_irq_cb(timer_irq_cb_t irq_cb, void *cb_data);
 
 /**
- * @brief blocking poll until timeout.
+ * @brief Polls until the configured timer event fires.
+ *
+ * This is a blocking wait helper for timer expiration.
  */
 void timer_poll(void);
 
 /**
- * @brief Start the generic timer.
- *
+ * @brief Starts the generic timer.
  */
 void timer_start(void);
 
 /**
- * @brief Stop the generic timer.
- *
+ * @brief Stops the generic timer.
  */
 void timer_stop(void);
 
 /**
- * @brief get current time.
+ * @brief Returns the current timer count value.
+ *
+ * @return Current timer count.
  */
-void timer_get_count(void);
+uint64_t timer_get_count(void);
 
 /**
- * @brief Set timeout relative to current time count.
+ * @brief Sets a relative timeout from the current timer count.
  *
- * @param cnt Relative timeout ticks until timeout.
- *
+ * @param[in] cnt Number of timer ticks to wait relative to the current count.
  */
 void timer_set_relative(uint32_t cnt);
 
 /**
- * @brief Set absolute timeout count.
+ * @brief Sets an absolute timeout value.
  *
- * @param cnt Absolute tick to until timeout trigger.
- *
+ * @param[in] cnt Absolute tick count at which the timeout triggers.
  */
 void timer_set_absolute(uint64_t cnt);
 
+/**
+ * @brief Converts milliseconds to timer ticks.
+ *
+ * @param[in] ms Time in milliseconds.
+ * @return Equivalent timer tick count.
+ */
 uint64_t timer_ms_to_cnt(uint32_t ms);
 
+/**
+ * @brief Converts timer ticks to milliseconds.
+ *
+ * @param[in] ticks Timer tick count.
+ * @return Equivalent time in milliseconds.
+ */
 uint32_t timer_cnt_to_ms(uint64_t ticks);
 
+/**
+ * @brief Converts microseconds to timer ticks.
+ *
+ * @param[in] us Time in microseconds.
+ * @return Equivalent timer tick count.
+ */
 uint64_t timer_us_to_cnt(uint32_t us);
 
+/**
+ * @brief Converts timer ticks to microseconds.
+ *
+ * @param[in] cnt Timer tick count.
+ * @return Equivalent time in microseconds.
+ */
 uint32_t timer_cnt_to_us(uint64_t cnt);
 
 /** @} */
 
-#endif // TIMER__H
+#ifdef __cplusplus
+}
+#endif
+
+#endif // __TIMER__H

@@ -47,6 +47,10 @@ extern "C" {
 	{                                                                                          \
 		*(volatile uint##_size##_t *)addr &= ~msk;                                         \
 	}                                                                                          \
+	static inline void mmio_bit_toggle_u##_size(uintptr_t addr, const uint##_size##_t msk)     \
+	{                                                                                          \
+		*(volatile uint##_size##_t *)addr ^= msk;                                          \
+	}                                                                                          \
 	static inline void mmio_bit_write_u##_size(uintptr_t addr, const uint##_size##_t val,      \
 						   const uint8_t pos, const uint8_t nbits)         \
 	{                                                                                          \

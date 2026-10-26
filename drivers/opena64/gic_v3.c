@@ -2,6 +2,11 @@
  * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  *
  * SPDX-License-Identifier: MIT
+ *
+ * @notes
+ * > oct 10, 2026: First version, only supports routing to EL1 non-secure.
+ *    no support for EL1 secure or EL3. Requires the GICD_CTLR.DS to be set
+ *    to 1, which disables security access.
  *******************************************************************************/
 
 #include "arm.h"

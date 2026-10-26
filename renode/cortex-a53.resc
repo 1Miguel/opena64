@@ -16,6 +16,3 @@ macro reset
     sysbus LoadELF $bin
 """
 runMacro $reset
-
-logLevel -1 sysbus.spi0
-sysbus LogPeripheralAccess sysbus.spi0

@@ -49,3 +49,10 @@ spi1: SPI.GenericSpiFlash @ spi0 1
     manufacturerId: 0x52
     memoryType: 0x8F
 
+gpio_ahb: GPIOPort.ARM_AHB_GPIO @ sysbus 0x09030000
+    -> gic@4
+
+led: Miscellaneous.LED @ gpio_ahb 5
+
+gpio_ahb:
+    5 -> led@0

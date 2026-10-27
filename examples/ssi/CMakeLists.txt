@@ -10,6 +10,9 @@ set(CMAKE_TOOLCHAIN_FILE ${OPENA64_DIR}/cmake/aarch64-none-elf.cmake CACHE STRIN
 
 project(hello_world LANGUAGES C ASM)
 
+include(${OPENA64_DIR}/cmake/unit-test.cmake)
+unity_enable()
+
 add_executable(firmware
     main.c
     # bsp
@@ -20,7 +23,7 @@ add_executable(firmware
     # drivers
     ${OPENA64_DRIVERS_DIR}/opena64/uart_pl011.c
     ${OPENA64_DRIVERS_DIR}/opena64/gic_v3.c
-    ${OPENA64_DRIVERS_DIR}/opena64/dw_apb_ssi.c
+    ${OPENA64_DRIVERS_DIR}/opena64/spi_dw.c
 )
 
 target_compile_definitions(firmware
@@ -32,6 +35,11 @@ target_include_directories(firmware
   PRIVATE
     ${OPENA64_DRIVERS_DIR}
     ${OPENA64_BSP_DIR}/a53_renode/aarch64
+)
+
+target_link_libraries(firmware
+  PRIVATE
+    unity
 )
 
 set_target_properties(firmware PROPERTIES

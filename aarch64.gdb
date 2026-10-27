@@ -32,7 +32,7 @@ define info_cntp
   info registers CNTFRQ_EL0 CNTP_CTL_EL0 CNTP_TVAL_EL0 CNTP_CVAL_EL0
 end
 
-define dw_apb_ssi_regs
+define spi_dw_regs
     if $argc == 0
         set $ssi_base = 0x09020000
     else
@@ -79,7 +79,7 @@ define dw_apb_ssi_regs
     x/wx ($ssi_base + 0xf4)
 end
 
-define dw_apb_ssi_regs_TXFLR
+define spi_dw_regs_TXFLR
     printf "TXFLR:  "
     x/wx ($ssi_base + 0x20)
 end
@@ -116,4 +116,3 @@ delete
 machine_reset
 
 b main
-b dw_apb_ssi.c:179

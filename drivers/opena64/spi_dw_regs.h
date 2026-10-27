@@ -1,5 +1,5 @@
 /*******************************************************************************
- * @file dw_apb_ssi_regs.h
+ * @file spi_dw_regs.h
  * @brief Synopsys DesignWare APB SSI register definitions.
  *
  * SPDX-License-Identifier: MIT
@@ -9,12 +9,12 @@
 #define DW_APB_SSI_REGS__H
 
 /**
- * @defgroup dw_apb_ssi_regs
+ * @defgroup spi_dw_regs
  * @{
  *
- * @ingroup dw_apb_ssi
+ * @ingroup spi_dw
  *
- * @brief dw_apb_ssi register definitions.
+ * @brief spi_dw register definitions.
  */
 
 /* Register offsets */

@@ -36,6 +36,12 @@ __attribute__((weak)) void int_34_irq_handler(void)
 		;
 }
 
+__attribute__((weak)) void int_35_irq_handler(void)
+{
+	while (1)
+		;
+}
+
 const irq_handler_t __gic_irq_vec_tbl[] __attribute__((section(".gic_vec_tbl"))) = {
 	// software generate interrupts (SGI)
 	0,
@@ -75,4 +81,5 @@ const irq_handler_t __gic_irq_vec_tbl[] __attribute__((section(".gic_vec_tbl")))
 	0,
 	int_33_irq_handler,
 	int_34_irq_handler,
+	int_35_irq_handler,
 };

@@ -18,7 +18,7 @@ extern "C" {
  *
  * @ingroup arm
  *
- * @brief MMIO api's
+ * @brief aarch64 armv8/9 arch specific instruction api's
  */
 
 /**

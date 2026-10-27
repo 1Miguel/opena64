@@ -1,9 +1,10 @@
 /**
  * @brief Minimal Unity test-runner example with UART-backed output.
  *
- * Initializes the PL011 UART, redirects standard output to it, and runs one
- * sample Unity test. The test currently demonstrates runner/output wiring;
- * it does not yet contain an assertion against application behavior.
+ * Built for the a53_renode platform with PL011 UART0 at 0x09000000. Initializes
+ * the UART, routes Unity's standard output to the emulated UART console, and
+ * runs a placeholder test to demonstrate the test-runner lifecycle. The
+ * sample currently has no assertions against application behavior.
  *
  * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  * @date Oct 19 2026
@@ -42,7 +43,7 @@ void tearDown(void)
 	/* Unity calls this after each test; add per-test cleanup here. */
 }
 
-/* A placeholder test showing where test cases and assertions belong. */
+/* Placeholder test showing where application assertions can be added. */
 void test_sample(void)
 {
 	printf("Sample test!\n\r");

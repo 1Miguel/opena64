@@ -14,7 +14,13 @@
 #ifndef __ARM__H
 #define __ARM__H
 
+#if defined(__aarch64__)
 #include "arm64.h"
+#elif defined(__arm__)
+#include "arm32.h"
+#else
+#error "Unsupported architecture"
+#endif
 
 #ifdef __cplusplus
 extern "C" {

@@ -1,9 +1,11 @@
 /**
  * @brief Demonstrate periodic generic-timer interrupts with UART output.
  *
- * The timer callback prints a message and schedules the next timeout using
- * the same interval. The interrupt controller must allow the timer interrupt
- * through for the callback to run.
+ * Built for the a53_renode platform. The example configures PL011 UART0
+ * (0x09000000), registers a callback, and starts a one-second generic-timer
+ * interval. Each timer interrupt prints a message and schedules the next
+ * interval. Timer interrupt ID 30 must be routed through the GIC for the
+ * callback to run; observe output on the emulated UART console.
  *
  * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  * @date Oct 19 2026
@@ -41,11 +43,10 @@ void timer_cb(void *cb_data)
 
 int main(void)
 {
-	/* Convert the desired one-second period into generic-timer counter ticks. */
+	/* Convert the one-second period into generic-timer counter ticks. */
 	uint64_t period_cnt = timer_ms_to_cnt(1000);
 
-	/* Set the timer interrupt priority and enable its delivery through the GIC.
-	 */
+	/* Set the timer interrupt priority and enable its delivery through the GIC. */
 	gic_v3_int_set_priority(30, 0);
 	gic_v3_int_enable(30);
 

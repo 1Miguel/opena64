@@ -1,5 +1,12 @@
 /**
- * @brief Demonstrate UART PL011 interrupt based usage.
+ * @brief Test polling and interrupt-driven DW_APB_SSI transfers.
+ *
+ * Built for the a53_renode platform and intended to run in Renode with its
+ * emulated SPI flash connected to SSI0 at 0x09020000. The Unity tests send the
+ * JEDEC Read ID command (0x9F) in polling and interrupt-driven modes, print
+ * the returned manufacturer/type/capacity bytes over PL011 UART0
+ * (0x09000000), and assert the expected ID is 52:8F:19. The SSI interrupt
+ * (ID 35) must be enabled through the GIC for the interrupt-mode test.
  *
  * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  * @date Oct 19 2026
@@ -54,6 +61,7 @@ void spi_irq_cb(struct spi_dw *ssi, void *cb_data)
 	}
 }
 
+/* Verify the JEDEC ID using the SSI transmit-interrupt callback. */
 void test_spi_dw_irq_mode(void)
 {
 	uint8_t cmd[4] = {0x9F, 0, 0, 0}; // JEDEC Read id cmd
@@ -89,6 +97,7 @@ void test_spi_dw_irq_mode(void)
 	TEST_ASSERT_EQUAL_UINT8(0x19, rsp[3]);
 }
 
+/* Verify the same JEDEC ID using the blocking polling transfer. */
 void test_spi_dw_polling_mode(void)
 {
 	uint8_t cmd[4] = {0x9F, 0, 0, 0}; // JEDEC Read id cmd

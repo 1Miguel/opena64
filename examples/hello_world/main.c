@@ -3,7 +3,9 @@
  *
  * This example shows the basic UART setup sequence: describe the UART's
  * memory-mapped register base, initialize it with the default serial settings,
- * enable it, and transmit characters using polling.
+ * enable it, and transmit "hello world!" using polling. It targets the
+ * a53_renode platform, where PL011 UART0 is mapped at 0x09000000; observe the
+ * output on the emulated UART console.
  *
  * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  * @date Oct 19 2026
@@ -35,7 +37,7 @@ int main(void)
 		uart_pl011_poll_out(&uart_dev, *p++);
 	}
 
-	/* No more output is needed, so turn off the UART before returning. */
+	/* No more output is needed, so disable the UART before returning. */
 	uart_pl011_disable(&uart_dev);
 
 	return 0;

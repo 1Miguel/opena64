@@ -1,5 +1,11 @@
 /**
- * @brief Demonstrate UART PL011 interrupt based usage.
+ * @brief Demonstrate interrupt-driven PL011 UART receive and transmit.
+ *
+ * Built for the a53_renode platform with UART0 at 0x09000000. The example
+ * enables UART interrupt ID 33 through the GIC, enables UART receive
+ * interrupts, and dispatches the UART driver's IRQ handler from the platform
+ * interrupt vector. Type in the emulated UART console to exercise the receive
+ * callback and its transmit path.
  *
  * @author Miguel Ugsimar <jmjugsimar@gmail.com>
  * @date Oct 19 2026
@@ -14,10 +20,8 @@
 /* UART base address used by the a53_renode platform. */
 #define UART0 (0x09000000)
 
-/* Shared by the callback so it can report each timer tick over UART. */
-/* 48-bytes */
+/* UART instance shared by the IRQ handler and application callback. */
 static struct uart_pl011 uart_dev = UART_PL011_INIT(UART0);
-/* 12-bytes */
 static const char v[] = "hello world";
 
 /* Route the C library's stdout writes through the PL011 polling transmitter. */
@@ -31,8 +35,7 @@ int _write(int file, char *ptr, int len) {
 }
 
 /**
- * @brief weak interrupt handler implementation
- * that calls the uart_pl011 driver callback.
+ * @brief Dispatch the UART interrupt to the PL011 driver.
  */
 void int_33_irq_handler(void)
 {
@@ -40,7 +43,10 @@ void int_33_irq_handler(void)
 }
 
 /**
- * @brief app/user defined uart irq callback.
+ * @brief Application callback invoked by the PL011 driver's IRQ handler.
+ *
+ * Reads available receive data and submits it to the transmit FIFO when
+ * transmit space is available.
  */
 void uart_cb(struct uart_pl011 *uart, void *cb_data)
 {
@@ -64,8 +70,7 @@ int main(void) {
   gic_v3_int_set_priority(33, 0);
   gic_v3_int_enable(33);
 
-  /* Initialize UART so the callback can report each
-   * timer expiration. */
+  /* Initialize UART before registering its callback and enabling RX IRQs. */
   struct uart_pl011_cfg uart_cfg = UART_PL011_DEFAULT_CFG;
 
   uart_pl011_init(&uart_dev, &uart_cfg);
@@ -80,4 +85,3 @@ int main(void) {
 
   return 0;
 }
-

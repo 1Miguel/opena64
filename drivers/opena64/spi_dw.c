@@ -101,7 +101,7 @@ int spi_dw_rx_fifo_ready(struct spi_dw *ssi)
 	if (!ssi) {
 		return -EINVAL;
 	}
-  return (int)is_rx_fifo_ready(ssi);
+	return (int)is_rx_fifo_ready(ssi);
 }
 
 int spi_dw_tx_fifo_ready(struct spi_dw *ssi)
@@ -109,7 +109,7 @@ int spi_dw_tx_fifo_ready(struct spi_dw *ssi)
 	if (!ssi) {
 		return -EINVAL;
 	}
-  return (int)is_tx_fifo_ready(ssi);
+	return (int)is_tx_fifo_ready(ssi);
 }
 
 int spi_dw_tx_irq_enable(struct spi_dw *ssi)
@@ -186,11 +186,12 @@ int spi_dw_rx_fifo_u8(struct spi_dw *ssi, uint8_t *buf, uint16_t len)
 
 int spi_dw_set_irq_cb(struct spi_dw *ssi, spi_dw_cb_t cb, void *cb_data)
 {
-  if (!ssi)
-    return -EINVAL;
-  ssi->cb = cb;
-  ssi->cb_data = cb_data;
-  return 0;
+	if (!ssi) {
+		return -EINVAL;
+	}
+	ssi->cb = cb;
+	ssi->cb_data = cb_data;
+	return 0;
 }
 
 static inline void set_num_frames(struct spi_dw *ssi, uint16_t n_fr)
@@ -198,8 +199,8 @@ static inline void set_num_frames(struct spi_dw *ssi, uint16_t n_fr)
 	mmio_write_u16(DW_APB_SSI_CTRLR1(ssi->reg), n_fr - 1);
 }
 
-static int start_async_transaction_u8(struct spi_dw *ssi,
-    uint8_t *tx_buf, uint16_t len, uint32_t mode)
+static int start_async_transaction_u8(struct spi_dw *ssi, uint8_t *tx_buf, uint16_t len,
+				      uint32_t mode)
 {
 	uint16_t n = 0;
 
@@ -214,12 +215,12 @@ static int start_async_transaction_u8(struct spi_dw *ssi,
 	ssi_disable(ssi);
 	set_transfer_mode(ssi, mode);
 
-  if (mode == DW_APB_SSI_CTRLR0_TMOD_RX) {
+	if (mode == DW_APB_SSI_CTRLR0_TMOD_RX) {
 		set_num_frames(ssi, len);
-  }
+	}
 
-  ssi_enable(ssi);
-  n = spi_dw_tx_fifo_u8(ssi, tx_buf, len);
+	ssi_enable(ssi);
+	n = spi_dw_tx_fifo_u8(ssi, tx_buf, len);
 	ssi_slave_sel(ssi, ssi->cfg->cs_sel);
 
 	return n;
@@ -232,9 +233,9 @@ int spi_dw_tx_rx_async_u8(struct spi_dw *ssi, uint8_t *tx_buf, uint16_t len)
 
 int spi_dw_tx_async_u8(struct spi_dw *ssi, uint8_t *tx_buf, uint16_t len)
 {
-  if (!tx_buf) {
-    return -EINVAL;
-  }
+	if (!tx_buf) {
+		return -EINVAL;
+	}
 	return start_async_transaction_u8(ssi, tx_buf, len, DW_APB_SSI_CTRLR0_TMOD_TX);
 }
 
@@ -320,22 +321,22 @@ int spi_dw_tx_rx_poll_u8(struct spi_dw *ssi, uint8_t *tx_buf, uint8_t *rx_buf, u
 
 int spi_dw_err_chk(struct spi_dw *ssi)
 {
-  if (ssi) {
-    return mmio_read_u32(DW_APB_SSI_RISR(ssi->reg));
-  }
-  return -EINVAL;
+	if (ssi) {
+		return mmio_read_u32(DW_APB_SSI_RISR(ssi->reg));
+	}
+	return -EINVAL;
 }
 
 void spi_dw_irq_handler(struct spi_dw *ssi)
 {
-  uint32_t isr;
+	uint32_t isr;
 
-  isr = mmio_bit_get_u32(DW_APB_SSI_ISR(ssi->reg), DW_APB_SSI_INT_ALL_BIT_MSK);
-  if (!isr) {
-    return;
-  }
+	isr = mmio_bit_get_u32(DW_APB_SSI_ISR(ssi->reg), DW_APB_SSI_INT_ALL_BIT_MSK);
+	if (!isr) {
+		return;
+	}
 
-  if (ssi->cb) {
-    ssi->cb(ssi, ssi->cb_data);
-  }
+	if (ssi->cb) {
+		ssi->cb(ssi, ssi->cb_data);
+	}
 }

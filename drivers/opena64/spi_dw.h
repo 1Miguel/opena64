@@ -41,7 +41,7 @@ extern "C" {
  *
  * @param _mode SPI mode number in the range 0-3.
  */
-#define SPI_DW_SPI_MODE(_mode)                                                                 \
+#define SPI_DW_SPI_MODE(_mode)                                                                     \
 	(((_mode) << DW_APB_SSI_CTRLR0_SCPH_BIT_POS) &                                             \
 	 (DW_APB_SSI_CTRLR0_SCPH_BIT_MSK | DW_APB_SSI_CTRLR0_SCPOL_BIT_MSK))
 
@@ -56,15 +56,13 @@ extern "C" {
  * @brief Encode the data-frame size for a controller with the 32-bit DFS field.
  * @param n Frame size in bits.
  */
-#define SPI_DW_DFS(n)                                                                          \
-	(((n) << SPI_DW_CTRLR0_DFS_32_BIT_POS) & SPI_DW_CTRLR0_DFS_32_BIT_MSK)
+#define SPI_DW_DFS(n) (((n) << SPI_DW_CTRLR0_DFS_32_BIT_POS) & SPI_DW_CTRLR0_DFS_32_BIT_MSK)
 #else
 /**
  * @brief Encode the data-frame size for the standard APB SSI DFS field.
  * @param n Frame size in bits (1-16); the register stores the size minus one.
  */
-#define SPI_DW_DFS(n)                                                                          \
-	(((n - 1) << DW_APB_SSI_CTRLR0_DFS_BIT_POS) & DW_APB_SSI_CTRLR0_DFS_BIT_MSK)
+#define SPI_DW_DFS(n) (((n - 1) << DW_APB_SSI_CTRLR0_DFS_BIT_POS) & DW_APB_SSI_CTRLR0_DFS_BIT_MSK)
 #endif // SPI_DW_DFS_32
        //
 /** @brief Select Motorola SPI frame format. */
@@ -113,9 +111,9 @@ struct spi_dw_cfg {
  */
 struct spi_dw {
 	struct spi_dw_cfg *cfg; /**< current spi transfer operation config */
-	uintptr_t reg;              /**< Base address of the controller's registers. */
+	uintptr_t reg;          /**< Base address of the controller's registers. */
 	spi_dw_cb_t cb;         /**< Optional interrupt callback. */
-	void *cb_data;              /**< Context passed to @ref cb. */
+	void *cb_data;          /**< Context passed to @ref cb. */
 };
 
 /**
@@ -123,11 +121,11 @@ struct spi_dw {
  *
  */
 enum spi_dw_err_msk {
-  SPI_DW_TX_FIFO_EMPTY = 1U << 0,
-  SPI_DW_TX_FIFO_OVR = 1U << 1,
-  SPI_DW_RX_FIFO_UDR = 1U << 2,
-  SPI_DW_RX_FIFO_OVR = 1U << 3,
-  SPI_DW_RX_FIFO_FULL = 1U << 4,
+	SPI_DW_TX_FIFO_EMPTY = 1U << 0,
+	SPI_DW_TX_FIFO_OVR = 1U << 1,
+	SPI_DW_RX_FIFO_UDR = 1U << 2,
+	SPI_DW_RX_FIFO_OVR = 1U << 3,
+	SPI_DW_RX_FIFO_FULL = 1U << 4,
 };
 
 /**
@@ -135,7 +133,7 @@ enum spi_dw_err_msk {
  *
  * @param _reg Base address of the SSI memory-mapped registers.
  */
-#define SPI_DW_INIT(_reg)                                                                      \
+#define SPI_DW_INIT(_reg)                                                                          \
 	{                                                                                          \
 		.reg = _reg,                                                                       \
 	}
@@ -149,10 +147,10 @@ enum spi_dw_err_msk {
  * @param _baudrate Requested serial clock frequency in hertz.
  * @param _cs       Chip select pin selection
  */
-#define SPI_DW_CFG_DEFAULT(_baudrate, _cs)                                           \
+#define SPI_DW_CFG_DEFAULT(_baudrate, _cs)                                                         \
 	{                                                                                          \
-		.op_cfg = SPI_DW_SPI_MODE(0) | SPI_DW_LINE_SINGLE |                        \
-			  SPI_DW_FRF_SPI | SPI_DW_DFS(8),                            \
+		.op_cfg =                                                                          \
+			SPI_DW_SPI_MODE(0) | SPI_DW_LINE_SINGLE | SPI_DW_FRF_SPI | SPI_DW_DFS(8),  \
 		.cs_sel = _cs,                                                                     \
 		.baudrate = _baudrate,                                                             \
 	}
@@ -166,10 +164,10 @@ enum spi_dw_err_msk {
  * @param _baudrate Requested serial clock frequency in hertz.
  * @param _cs       Chip select pin selection
  */
-#define SPI_DW_CFG_DEFAULT_TEST_MODE(_baudrate, _cs)                                           \
+#define SPI_DW_CFG_DEFAULT_TEST_MODE(_baudrate, _cs)                                               \
 	{                                                                                          \
-		.op_cfg = SPI_DW_SPI_MODE(0) | SPI_DW_LINE_SINGLE |                        \
-			  SPI_DW_FRF_SPI | SPI_DW_LOOPBACK_MODE | SPI_DW_DFS(8),                            \
+		.op_cfg = SPI_DW_SPI_MODE(0) | SPI_DW_LINE_SINGLE | SPI_DW_FRF_SPI |               \
+			  SPI_DW_LOOPBACK_MODE | SPI_DW_DFS(8),                                    \
 		.cs_sel = _cs,                                                                     \
 		.baudrate = _baudrate,                                                             \
 	}
@@ -319,8 +317,7 @@ int spi_dw_rx_fifo_u8(struct spi_dw *ssi, uint8_t *buf, uint16_t len);
  * @param[in]  len Number of bytes to transfer.
  * @return 0 on success, or a negative error code.
  */
-int spi_dw_tx_rx_poll_u8(struct spi_dw *ssi, uint8_t *tx_buf, uint8_t *rx_buf,
-			     uint16_t len);
+int spi_dw_tx_rx_poll_u8(struct spi_dw *ssi, uint8_t *tx_buf, uint8_t *rx_buf, uint16_t len);
 
 /**
  * @brief Start the async/irq-based spi transmit receive.
@@ -335,15 +332,15 @@ int spi_dw_tx_rx_poll_u8(struct spi_dw *ssi, uint8_t *tx_buf, uint8_t *rx_buf,
 int spi_dw_tx_rx_async_u8(struct spi_dw *ssi, uint8_t *tx_buf, uint16_t len);
 
 /**
-  * @brief Perform a blocking, polling transmit-only operation.
-  *
-  * @param[in] ssi SSI controller instance.
-  * @param[in] buf Transmit data.
-  * @param[in] len Number of bytes to transmit.
-  *
-  * @retval 0 on success.
-  * @retval -errno at error.
-  */
+ * @brief Perform a blocking, polling transmit-only operation.
+ *
+ * @param[in] ssi SSI controller instance.
+ * @param[in] buf Transmit data.
+ * @param[in] len Number of bytes to transmit.
+ *
+ * @retval 0 on success.
+ * @retval -errno at error.
+ */
 static inline int spi_dw_tx_poll_u8(struct spi_dw *ssi, uint8_t *buf, uint16_t len)
 {
 	return spi_dw_tx_rx_poll_u8(ssi, buf, NULL, len);

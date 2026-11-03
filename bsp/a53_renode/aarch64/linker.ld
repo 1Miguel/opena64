@@ -39,7 +39,7 @@ SECTIONS
      * KEEP() ensures that even if compiler thinks startup section
      * is unused (dead code), it will not be ignored.*/
     KEEP(*(.startup))
-    *(.startup*)
+    KEEP(*(.startup*))
     *(.text)
     *(.text*)
   } > FLASH
@@ -143,6 +143,9 @@ SECTIONS
   __stack_bottom_el1 = .;
   . += 32K;
   __stack_top_el1 = .;
+
+  . = ALIGN(16);
+  __stack_end = .;
 
   /**
   * start of the data section loadable memory

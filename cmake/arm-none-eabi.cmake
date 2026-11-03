@@ -22,10 +22,10 @@ find_program(ARM_OBJDUMP
     REQUIRED
 )
 
-set(CMAKE_C_COMPILER "${ARM_CC}" CACHE FILEPATH "AArch64 C compiler")
-set(CMAKE_ASM_COMPILER "${ARM_AS}" CACHE FILEPATH "AArch64 assembler")
-set(CMAKE_OBJCOPY "${ARM_OBJCOPY}" CACHE FILEPATH "AArch64 objcopy")
-set(CMAKE_OBJDUMP "${ARM_OBJDUMP}" CACHE FILEPATH "AArch64 objdump")
+set(CMAKE_C_COMPILER "${ARM_CC}" CACHE FILEPATH "ARM32 C compiler")
+set(CMAKE_ASM_COMPILER "${ARM_AS}" CACHE FILEPATH "ARM32 assembler")
+set(CMAKE_OBJCOPY "${ARM_OBJCOPY}" CACHE FILEPATH "ARM32 objcopy")
+set(CMAKE_OBJDUMP "${ARM_OBJDUMP}" CACHE FILEPATH "ARM32 objdump")
 
 set(CMAKE_C_COMPILER_TARGET "${TOOLCHAIN_PREFIX}" CACHE STRING
     "AArch64 compiler target")
@@ -108,6 +108,18 @@ macro(target_create_bin TARGET_OBJ)
               "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_OBJ}.bin"
       BYPRODUCTS "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_OBJ}.bin"
       COMMENT "Creating ${TARGET_OBJ}.bin"
+  )
+endmacro()
+
+macro(target_create_hex TARGET_OBJ)
+  set(TARGET_FILE_NAME $<TARGET_FILE:${TARGET_OBJ}>)
+  add_custom_command(TARGET ${TARGET_OBJ} POST_BUILD
+      COMMAND "${CMAKE_OBJCOPY}" -O ihex
+              "${TARGET_FILE_NAME}"
+              "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_OBJ}.hex"
+      BYPRODUCTS "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_OBJ}.hex"
+      COMMENT "Creating ${TARGET_OBJ}.hex"
+      VERBATIM
   )
 endmacro()
 

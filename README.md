@@ -25,6 +25,31 @@ Then run
 Clear; include @renode/cortex-a53.resc ; machine StartGdbServer 3334 ; uart_connect uart0
 ```
 
+## Run in QEMU (ARMv9)
+With QEMU's AArch64 system emulator installed, run the built ELF on a virtual
+machine using an ARMv9 Cortex-A710 CPU:
+
+```bash
+qemu-system-aarch64 \
+  -machine virt,secure=on,gic-version=3 \
+  -cpu cortex-a710 \
+  -nographic -monitor none -serial stdio \
+  -kernel build/firmware.elf
+```
+
+Press `Ctrl-A` then `X` to exit QEMU.
+
+or use max features configuration which enables all armv9 features:
+```bash
+qemu-system-aarch64 \
+    -M virt,secure=on,virtualization=off \
+    -cpu max,aarch64=on \
+    -accel tcg \
+    -smp 1 \
+    -m 2048 \
+    -nographic \
+    -bios path/to/your/baremetal.bin
+```
 
 ## 3. GDB Connect
 ```bash

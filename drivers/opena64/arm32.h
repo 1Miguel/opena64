@@ -7,6 +7,7 @@
 #define __AARCH32__H
 
 #include <stdint.h>
+#include "toolchain.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,7 +33,7 @@ extern "C" {
  * @return uint32 format of affinity.
  */
 #define CPU_AFFINITY(_aff0, _aff1, _aff2, _aff3)                                                   \
-	(((uint32_t)(_aff0) & 0xFFu) | (((uint32_t)(_aff1) & 0xFFu) << 8) |                         \
+	(((uint32_t)(_aff0) & 0xFFu) | (((uint32_t)(_aff1) & 0xFFu) << 8) |                        \
 	 (((uint32_t)(_aff2) & 0xFFu) << 16) | (((uint32_t)(_aff3) & 0xFFu) << 24))
 
 /**
@@ -49,7 +50,7 @@ extern "C" {
 #define __MRC(cp, op1, crn, crm, op2)                                                              \
 	({                                                                                         \
 		uint32_t __val;                                                                    \
-		__asm__ volatile("mrc p" #cp ", " #op1 ", %0, c" #crn ", c" #crm ", " #op2       \
+		__asm__ volatile("mrc p" #cp ", " #op1 ", %0, c" #crn ", c" #crm ", " #op2         \
 				 : "=r"(__val));                                                   \
 		__val;                                                                             \
 	})
@@ -67,8 +68,10 @@ extern "C" {
 #define __MCR(cp, op1, val, crn, crm, op2)                                                         \
 	do {                                                                                       \
 		uint32_t __val = (uint32_t)(val);                                                  \
-		__asm__ volatile("mcr p" #cp ", " #op1 ", %0, c" #crn ", c" #crm ", " #op2      \
-				 : : "r"(__val) : "memory");                                    \
+		__asm__ volatile("mcr p" #cp ", " #op1 ", %0, c" #crn ", c" #crm ", " #op2         \
+				 :                                                                 \
+				 : "r"(__val)                                                      \
+				 : "memory");                                                      \
 	} while (0)
 
 /**
@@ -83,7 +86,7 @@ extern "C" {
 #define __MRRC(cp, op, crm)                                                                        \
 	({                                                                                         \
 		uint64_t __val;                                                                    \
-		__asm__ volatile("mrrc p" #cp ", " #op ", %Q0, %R0, c" #crm : "=r"(__val));       \
+		__asm__ volatile("mrrc p" #cp ", " #op ", %Q0, %R0, c" #crm : "=r"(__val));        \
 		__val;                                                                             \
 	})
 
@@ -98,8 +101,10 @@ extern "C" {
 #define __MCRR(cp, op, val, crm)                                                                   \
 	do {                                                                                       \
 		uint64_t __val = (uint64_t)(val);                                                  \
-		__asm__ volatile("mcrr p" #cp ", " #op ", %Q0, %R0, c" #crm                       \
-				 : : "r"(__val) : "memory");                                    \
+		__asm__ volatile("mcrr p" #cp ", " #op ", %Q0, %R0, c" #crm                        \
+				 :                                                                 \
+				 : "r"(__val)                                                      \
+				 : "memory");                                                      \
 	} while (0)
 
 #define __SYS_REG_FUNC_RO(reg, cp, op1, crn, crm, op2)                                             \
@@ -137,8 +142,8 @@ extern "C" {
 		return sys_reg_##reg##_read() & bit_msk;                                           \
 	}
 
-#define __SYS_REG_FUNC_64(reg, cp, op, crm)                                                       \
-	__SYS_REG_FUNC_RO_64(reg, cp, op, crm)                                                      \
+#define __SYS_REG_FUNC_64(reg, cp, op, crm)                                                        \
+	__SYS_REG_FUNC_RO_64(reg, cp, op, crm)                                                     \
 	static inline void sys_reg_##reg##_write(uint64_t val)                                     \
 	{                                                                                          \
 		__MCRR(cp, op, val, crm);                                                          \
@@ -182,29 +187,29 @@ static inline uint64_t sys_reg_currentEL_bit_get(uint64_t bit_msk)
 }
 
 /* AArch32 access to the processor identification and secure configuration. */
-__SYS_REG_FUNC_RO(MPIDR_EL1, 15, 0, 0, 0, 5)
-__SYS_REG_FUNC_RO(SCR_EL3, 15, 0, 1, 1, 0)
+__SYS_REG_FUNC_RO(MPIDR, 15, 0, 0, 0, 5)
+__SYS_REG_FUNC_RO(SCR, 15, 0, 1, 1, 0)
 
 /* GICv3 CPU interface registers (AArch32 CP15 encodings). */
-__SYS_REG_FUNC(ICC_CTLR_EL1, 15, 0, 12, 12, 4)
-__SYS_REG_FUNC(ICC_SRE_EL1, 15, 0, 12, 12, 5)
-__SYS_REG_FUNC_RO(ICC_IAR0_EL1, 15, 0, 12, 8, 0)
-__SYS_REG_FUNC_RO(ICC_IAR1_EL1, 15, 0, 12, 12, 0)
-__SYS_REG_FUNC(ICC_EOIR0_EL1, 15, 0, 12, 8, 1)
-__SYS_REG_FUNC(ICC_EOIR1_EL1, 15, 0, 12, 12, 1)
-__SYS_REG_FUNC(ICC_BPR0_EL1, 15, 0, 12, 8, 3)
-__SYS_REG_FUNC(ICC_BPR1_EL1, 15, 0, 12, 12, 3)
-__SYS_REG_FUNC(ICC_IGRPEN0_EL1, 15, 0, 12, 12, 6)
-__SYS_REG_FUNC(ICC_IGRPEN1_EL1, 15, 0, 12, 12, 7)
-__SYS_REG_FUNC(ICC_PMR_EL1, 15, 0, 4, 6, 0)
-__SYS_REG_FUNC_64(ICC_SGI0R_EL1, 15, 2, 12)
+__SYS_REG_FUNC(ICC_CTLR, 15, 0, 12, 12, 4)
+__SYS_REG_FUNC(ICC_SRE, 15, 0, 12, 12, 5)
+__SYS_REG_FUNC_RO(ICC_IAR0, 15, 0, 12, 8, 0)
+__SYS_REG_FUNC_RO(ICC_IAR1, 15, 0, 12, 12, 0)
+__SYS_REG_FUNC(ICC_EOIR0, 15, 0, 12, 8, 1)
+__SYS_REG_FUNC(ICC_EOIR1, 15, 0, 12, 12, 1)
+__SYS_REG_FUNC(ICC_BPR0, 15, 0, 12, 8, 3)
+__SYS_REG_FUNC(ICC_BPR1, 15, 0, 12, 12, 3)
+__SYS_REG_FUNC(ICC_IGRPEN0, 15, 0, 12, 12, 6)
+__SYS_REG_FUNC(ICC_IGRPEN1, 15, 0, 12, 12, 7)
+__SYS_REG_FUNC(ICC_PMR, 15, 0, 4, 6, 0)
+__SYS_REG_FUNC_64(ICC_SGI0R, 15, 2, 12)
 
 /* ARM generic timer registers (available on implementations with the timer). */
-__SYS_REG_FUNC(CNTP_CTL_EL0, 15, 0, 14, 2, 1)
-__SYS_REG_FUNC(CNTP_TVAL_EL0, 15, 0, 14, 2, 0)
-__SYS_REG_FUNC_64(CNTP_CVAL_EL0, 15, 2, 14)
-__SYS_REG_FUNC_RO_64(CNTPCT_EL0, 15, 0, 14)
-__SYS_REG_FUNC_RO(CNTFRQ_EL0, 15, 0, 14, 0, 0)
+__SYS_REG_FUNC(CNTP_CTL, 15, 0, 14, 2, 1)
+__SYS_REG_FUNC(CNTP_TVAL, 15, 0, 14, 2, 0)
+__SYS_REG_FUNC_64(CNTP_CVAL, 15, 2, 14)
+__SYS_REG_FUNC_RO_64(CNTPCT, 15, 0, 14)
+__SYS_REG_FUNC_RO(CNTFRQ, 15, 0, 14, 0, 0)
 
 /**
  * @brief Helper to read an ARM system register.
@@ -270,7 +275,7 @@ static inline void irq_disable(void)
  */
 static inline uint32_t curr_cpu_aff(void)
 {
-	return (uint32_t)sys_reg_read(MPIDR_EL1) & 0x00FFFFFFu;
+	return (uint32_t)sys_reg_read(MPIDR) & 0x00FFFFFFu;
 }
 
 /**
@@ -280,17 +285,7 @@ static inline uint32_t curr_cpu_aff(void)
  */
 static inline uint8_t curr_cpu_id(void)
 {
-	return (uint8_t)sys_reg_bit_get(MPIDR_EL1, 0xFFu);
-}
-
-/**
- * @brief Get the current exception level.
- *
- * @return Current exception level.
- */
-static inline uint8_t curr_exc_lvl(void)
-{
-	return (uint8_t)(sys_reg_read(currentEL) >> 2);
+	return (uint8_t)sys_reg_bit_get(MPIDR, 0xFFu);
 }
 
 /** @} */

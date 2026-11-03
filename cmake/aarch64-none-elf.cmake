@@ -46,7 +46,6 @@ add_compile_options(
   # not have a program startup before main.
   -ffreestanding
   -fno-stack-protector
-
   # instead of one big chunk of mem section for function and data, the
   # compiler splits every function and bariable into its own isolated
   # sections.aarc
@@ -76,6 +75,9 @@ add_compile_options(
   -Wl,--specs=nosys.specs
   -mcpu=cortex-a53
   #-mgeneral-regs-only
+
+  -save-temps=obj
+  -fverbose-asm
 )
 
 # Set all linker flags, this is equivalent to calling
@@ -117,6 +119,18 @@ macro(target_create_bin TARGET_OBJ)
               "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_OBJ}.bin"
       BYPRODUCTS "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_OBJ}.bin"
       COMMENT "Creating ${TARGET_OBJ}.bin"
+  )
+endmacro()
+
+macro(target_create_hex TARGET_OBJ)
+  set(TARGET_FILE_NAME $<TARGET_FILE:${TARGET_OBJ}>)
+  add_custom_command(TARGET ${TARGET_OBJ} POST_BUILD
+      COMMAND "${CMAKE_OBJCOPY}" -O ihex
+              "${TARGET_FILE_NAME}"
+              "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_OBJ}.hex"
+      BYPRODUCTS "${CMAKE_CURRENT_BINARY_DIR}/${TARGET_OBJ}.hex"
+      COMMENT "Creating ${TARGET_OBJ}.hex"
+      VERBATIM
   )
 endmacro()
 

@@ -47,15 +47,15 @@ typedef void (*gic_irq_handler_t)(void);
 
 extern gic_irq_handler_t __gic_vec_start__[];
 extern gic_irq_handler_t __gic_vec_end__[];
+extern char *__gicd_base[];
+extern char *__gicr_base[];
 
-static uintptr_t gicv3_dist = GICD_BASE_ADDRESS;
-static uintptr_t gicv3_rdist[GICR_NUM_CORE] = {
-	0x080A0000UL,
-};
+static uintptr_t gicv3_dist = (uintptr_t)__gicd_base;
+static uintptr_t gicv3_rdist = (uintptr_t)__gicr_base;
 
 static inline uintptr_t gicr_rdist_base_addr(void)
 {
-	return gicv3_rdist[curr_cpu_id()];
+	return gicv3_rdist + ((uintptr_t)0x20000 * curr_cpu_id());
 }
 
 static inline void set_irouter_curr_affinity(unsigned int int_id)

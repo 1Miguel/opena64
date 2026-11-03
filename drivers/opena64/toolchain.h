@@ -50,7 +50,7 @@
  *  unreachable codes.
  */
 #ifndef __code_unreachable
-#define __code_unreachable __builtin_unreachable();
+#define __code_unreachable __builtin_unreachable
 #endif
 
 /**

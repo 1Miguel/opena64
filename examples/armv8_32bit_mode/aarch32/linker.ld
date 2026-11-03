@@ -1,0 +1,149 @@
+/**
+ * @file liker.ld
+ * @brief This is the linker file that describes the memory
+ * layout of cortex-a9 (aarch32). This is meant to work with renode,
+ *
+ * Refer to:
+ * https://github.com/renode/renode/blob/master/platforms/cpus/cortex-a53-gicv3.repl
+ */
+
+ENTRY(_reset)
+
+STACK_SIZE_IRQ = 0x4000;
+STACK_SIZE_FIQ = 0x4000;
+STACK_SIZE_ABT = 0x4000;
+STACK_SIZE_SVC = 0x4000;
+STACK_SIZE_MON = 0x4000;
+STACK_SIZE_UND = 0x4000;
+STACK_SIZE_SYS = 0x4000;
+
+STARTING_OFFSET = 0x10000;
+
+MEMORY {
+  FLASH (rx)   : ORIGIN = 0x00010000, LENGTH = 0x08000000
+  RAM   (rw)   : ORIGIN = 0x40040000, LENGTH = 0x80000000
+}
+
+SECTIONS
+{
+  /**
+   * The `.text` secition usually contains read-only
+   * compiled machine code. note that you can use any
+   * name to name this section, but it is preferred to
+   * use`.text` since its a standardized name used by
+   * c runtime (crt).
+   */
+	.text : {
+    /* make sure startup section is at the start of FLASH
+     * mem, see the `.section` directive in `startup.asm`
+     *
+     * ... whats with the KEEP()?
+     * KEEP() ensures that even if compiler thinks startup section
+     * is unused (dead code), it will not be ignored.*/
+    KEEP(*(.startup))
+    KEEP(*(.startup*))
+    *(.text)
+    *(.text*)
+  } > FLASH
+
+  . = ALIGN(8);
+  .rodata :{
+    .__rodata_start__ = .;
+    *(.rodata*)
+    .__rodata_end__ = .;
+  } > FLASH
+
+  . = ALIGN(8);
+	.data : {
+    __data_start__ = .;
+    *(.data)
+    *(.data*)
+    __data_end__ = .;
+  } > RAM AT > FLASH
+
+  . = ALIGN(8);
+	.bss : {
+    __bss_start__ = .;
+    *(.bss*)
+    *(.bss COMMON)
+    __bss_end__ = .;
+  } > RAM
+
+  /*
+   * C/C++ initialization arrays.
+   */
+  .preinit_array : ALIGN(8)
+  {
+      __preinit_array_start = .;
+      KEEP(*(.preinit_array*))
+      __preinit_array_end = .;
+  } > FLASH
+
+  /**
+   * What is this for?
+   *
+   * if you look into libc source code, you will find
+   * a code snippet
+   */
+  .init_array : ALIGN(8)
+  {
+      __init_array_start = .;
+      KEEP(*(.init_array*))
+      __init_array_end = .;
+  } > FLASH
+
+  .fini_array : ALIGN(8)
+  {
+      __fini_array_start = .;
+      KEEP(*(.fini_array*))
+      __fini_array_end = .;
+  } > FLASH
+
+  . = ALIGN(__bss_end__, 8);
+  .heap : {
+	  __heap_start = .;
+    . += 0x1000;
+    . = ALIGN(8);
+	  __heap_end = .;
+  }
+
+  . = ALIGN(16);
+  .cpu0.stack : {
+
+    __cpu0_stack_top = .;
+    . += STACK_SIZE_IRQ;
+    . = ALIGN(8);
+    __cpu0_stack_top_irq = .;
+
+    . += STACK_SIZE_FIQ;
+    . = ALIGN(8);
+    __cpu0_stack_top_fiq = .;
+
+    . += STACK_SIZE_ABT;
+    . = ALIGN(8);
+    __cpu0_stack_top_abt = .;
+
+    . += STACK_SIZE_SVC;
+    . = ALIGN(8);
+    __cpu0_stack_top_svc = .;
+
+    . += STACK_SIZE_MON;
+    . = ALIGN(8);
+    __cpu0_stack_top_mon = .;
+
+    . += STACK_SIZE_UND;
+    . = ALIGN(8);
+    __cpu0_stack_top_und = .;
+
+    . += STACK_SIZE_SYS;
+    . = ALIGN(8);
+    __cpu0_stack_top_sys = .;
+
+  } > RAM
+
+  /**
+  * start of the data section loadable memory
+  */
+  __data_load_start__ = LOADADDR(.data);
+}
+

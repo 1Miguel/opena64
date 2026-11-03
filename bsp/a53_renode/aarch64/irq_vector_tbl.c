@@ -4,8 +4,6 @@
  * SPDX-License-Identifier: MIT
  *******************************************************************************/
 
-typedef void (*irq_handler_t)(void);
-
 __attribute__((weak)) void el3_cntp_irq_handler(void)
 {
 	while (1)
@@ -41,6 +39,8 @@ __attribute__((weak)) void int_35_irq_handler(void)
 	while (1)
 		;
 }
+
+typedef void (*irq_handler_t)(void);
 
 const irq_handler_t __gic_irq_vec_tbl[] __attribute__((section(".gic_vec_tbl"))) = {
 	// software generate interrupts (SGI)

@@ -1,4 +1,4 @@
-.section .text.startup
+.section .startup
 .global _reset
 
 /*
@@ -414,6 +414,10 @@ _spx_serror_handler:
   eret
 
 _low_el_sync_handler:
+  saveregister
+  bl el_low_el_sync_handler
+  restoreregister
+  eret
 _low_el_irq_handler:
 _low_el_fiq_handler:
 _low_el_serror_handler:

@@ -7,6 +7,7 @@
 #define __AARCH64__H
 
 #include <stdint.h>
+#include "toolchain.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -35,6 +36,30 @@ extern "C" {
 	((_aff0 & 0xFF) | ((_aff1 & 0xFF) << 16) | ((_aff2 & 0xFF) << 24) | ((_aff3 & 0xFF) << 32))
 
 /**
+ * @brief Write register value.
+ *
+ * @param _reg Register name i.e "x0", "w0"
+ * @param _val Value to write to register
+ */
+#define __reg_write(_reg, _val)                                                                    \
+	{                                                                                          \
+		uint64_t __val = (uint64_t)_val;                                                   \
+		__asm volatile("mov " #_reg ", %0" : : "r"(__val));                                \
+	}
+
+/**
+ * @brief Read register value.
+ *
+ * @param _reg Register name i.e "x0", "w0"
+ */
+#define __reg_read(_reg)                                                                           \
+	({                                                                                         \
+		uint64_t __val;                                                                    \
+		__asm volatile("mov %0, " #_reg : "=r"(__val));                                    \
+		__val;                                                                             \
+	})
+
+/**
  * @brief Reads an AArch64 system register.
  *
  * @param reg System register name.
@@ -44,7 +69,7 @@ extern "C" {
 #define __MRS(reg)                                                                                 \
 	({                                                                                         \
 		uint64_t __val;                                                                    \
-		__asm__ volatile("mrs %0, " #reg : "=r"(__val));                                   \
+		__asm volatile("mrs %0, " #reg : "=r"(__val));                                     \
 		__val;                                                                             \
 	})
 
@@ -54,19 +79,41 @@ extern "C" {
  * @param reg System register name.
  * @param val Value to write.
  */
-#define __MSR(reg, val)                                                                            \
-	{                                                                                          \
-		__asm__ volatile("msr " #reg ", %0" : : "r"(val) : "memory");                      \
-	}
+#define __MSR(reg, val) __asm volatile("msr " #reg ", %0" : : "r"(val) : "memory")
 
 /**
  * @brief Executes a Secure Monitor Call with an immediate value.
  *
  * @param imm Immediate value passed to the SMC instruction.
  */
-#define smc(imm)                                                                                   \
+#define smc(imm) __asm volatile("smc #" #imm::: "memory")
+
+/**
+ * @brief Executes a Secure Monitor (SMC) Call with an immediate value.
+ *  and a single argument.
+ *
+ * @param imm  Immediate value passed to the SVC instruction.
+ * @param arg0 Single argument.
+ */
+#define smc1(imm, arg0)                                                                            \
 	{                                                                                          \
-		__asm__ volatile("smc #" #imm::: "memory");                                        \
+		__reg_write(x15, arg0);                                                            \
+		smc(imm);                                                                          \
+	}
+
+#define smc2(imm, arg0, arg1)                                                                      \
+	{                                                                                          \
+		__reg_write(x15, arg0);                                                            \
+		__reg_write(x16, arg1);                                                            \
+		smc(imm);                                                                          \
+	}
+
+#define smc3(imm, arg0, arg1, arg2)                                                                \
+	{                                                                                          \
+		__reg_write(x15, arg0);                                                            \
+		__reg_write(x16, arg1);                                                            \
+		__reg_write(x17, arg2);                                                            \
+		smc(imm);                                                                          \
 	}
 
 /**
@@ -76,7 +123,7 @@ extern "C" {
  */
 #define svc(imm)                                                                                   \
 	{                                                                                          \
-		__asm__ volatile("svc #" #imm::: "memory");                                        \
+		__asm volatile("svc #" #imm::: "memory");                                          \
 	}
 
 #define __SYS_REG_FUNC_RO(reg)                                                                     \
@@ -109,6 +156,54 @@ __SYS_REG_FUNC(SCR_EL3)
 __SYS_REG_FUNC(MPIDR_EL3)
 __SYS_REG_FUNC(SCR_EL1)
 __SYS_REG_FUNC(MPIDR_EL1)
+__SYS_REG_FUNC_RO(ESR_EL3)
+__SYS_REG_FUNC_RO(ESR_EL1)
+
+/**
+ * @brief ESR_ELx exception class (EC) field.
+ *
+ * Use ESR_EC(esr) to extract the EC field from an ESR_ELx value.
+ */
+#define ESR_EC_SHIFT  26U
+#define ESR_EC_MASK   (0x3FU << ESR_EC_SHIFT)
+#define ESR_EC(esr)   (((uint32_t)(esr) >> ESR_EC_SHIFT) & 0x3FU)
+#define ESR_ISS_SHIFT (0)
+#define ESR_ISS_MASK  (0x01FFFFFF << ESR_ISS_SHIFT)
+
+#define ESR_EC_UNKNOWN                    0x00U
+#define ESR_EC_TRAPPED_WFI_WFE            0x01U
+#define ESR_EC_TRAPPED_CP15_MCR_MRC       0x03U
+#define ESR_EC_TRAPPED_CP15_MCRR_MRRC     0x04U
+#define ESR_EC_TRAPPED_CP14_MCR_MRC       0x05U
+#define ESR_EC_TRAPPED_CP14_LDC_STC       0x06U
+#define ESR_EC_TRAPPED_SIMD_FP_ACCESS     0x07U
+#define ESR_EC_TRAPPED_CP10               0x08U
+#define ESR_EC_ILLEGAL_EXECUTION_STATE    0x0EU
+#define ESR_EC_SVC_AARCH32                0x11U
+#define ESR_EC_HVC_AARCH32                0x12U
+#define ESR_EC_SMC_AARCH32                0x13U
+#define ESR_EC_SVC_AARCH64                0x15U
+#define ESR_EC_HVC_AARCH64                0x16U
+#define ESR_EC_SMC_AARCH64                0x17U
+#define ESR_EC_TRAPPED_MSR_MRS            0x18U
+#define ESR_EC_INSTRUCTION_ABORT_LOWER_EL 0x20U
+#define ESR_EC_INSTRUCTION_ABORT_SAME_EL  0x21U
+#define ESR_EC_PC_ALIGNMENT_FAULT         0x22U
+#define ESR_EC_DATA_ABORT_LOWER_EL        0x24U
+#define ESR_EC_DATA_ABORT_SAME_EL         0x25U
+#define ESR_EC_SP_ALIGNMENT_FAULT         0x26U
+#define ESR_EC_FP_EXCEPTION_AARCH32       0x28U
+#define ESR_EC_FP_EXCEPTION_AARCH64       0x2CU
+#define ESR_EC_SERROR                     0x2FU
+#define ESR_EC_BREAKPOINT_LOWER_EL        0x30U
+#define ESR_EC_BREAKPOINT_SAME_EL         0x31U
+#define ESR_EC_SOFTWARE_STEP_LOWER_EL     0x32U
+#define ESR_EC_SOFTWARE_STEP_SAME_EL      0x33U
+#define ESR_EC_WATCHPOINT_LOWER_EL        0x34U
+#define ESR_EC_WATCHPOINT_SAME_EL         0x35U
+#define ESR_EC_BKPT_AARCH32               0x38U
+#define ESR_EC_VECTOR_CATCH_AARCH32       0x3AU
+#define ESR_EC_BRK_AARCH64                0x3CU
 
 // GIC cpu interface system registers
 __SYS_REG_FUNC(ICC_CTLR_EL3)
@@ -176,7 +271,7 @@ __SYS_REG_FUNC_RO(CNTFRQ_EL0)
  */
 static inline void irq_enable(void)
 {
-	__asm__ volatile("daifclr #3" ::: "memory");
+	__asm volatile("daifclr #3" ::: "memory");
 }
 
 /**
@@ -184,7 +279,7 @@ static inline void irq_enable(void)
  */
 static inline void irq_disable(void)
 {
-	__asm__ volatile("daifclr #3" ::: "memory");
+	__asm volatile("daifclr #3" ::: "memory");
 }
 
 /**

@@ -114,5 +114,5 @@ end
 delete
 
 machine_reset
+b el3_run_32bit_code
 
-b main

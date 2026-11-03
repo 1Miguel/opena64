@@ -164,6 +164,9 @@ extern "C" {
 #define MMU_BLOCK_DESC_AP_RW (1ULL << 5)
 #define MMU_BLOCK_DESC_AP_WO (1ULL << 5)
 #define MMU_BLOCK_DESC_AP_RO (1ULL << 6)
+
+void mmu_init(void);
+
 /** @} */
 
 #ifdef __cplusplus

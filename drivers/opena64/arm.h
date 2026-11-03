@@ -31,7 +31,7 @@ extern "C" {
  */
 static inline void nop(void)
 {
-	__asm__ volatile("nop");
+	__asm volatile("nop");
 }
 
 /**
@@ -39,7 +39,7 @@ static inline void nop(void)
  */
 static inline void yield(void)
 {
-	__asm__ volatile("yield" ::: "memory");
+	__asm volatile("yield" ::: "memory");
 }
 
 /**
@@ -47,7 +47,7 @@ static inline void yield(void)
  */
 static inline void wfe(void)
 {
-	__asm__ volatile("wfe" ::: "memory");
+	__asm volatile("wfe" ::: "memory");
 }
 
 /**
@@ -55,7 +55,7 @@ static inline void wfe(void)
  */
 static inline void wfi(void)
 {
-	__asm__ volatile("wfi" ::: "memory");
+	__asm volatile("wfi" ::: "memory");
 }
 
 /**
@@ -63,7 +63,7 @@ static inline void wfi(void)
  */
 static inline void sev(void)
 {
-	__asm__ volatile("sev" ::: "memory");
+	__asm volatile("sev" ::: "memory");
 }
 
 /**
@@ -71,7 +71,7 @@ static inline void sev(void)
  */
 static inline void clrex(void)
 {
-	__asm__ volatile("clrex" ::: "memory");
+	__asm volatile("clrex" ::: "memory");
 }
 
 /**
@@ -79,7 +79,7 @@ static inline void clrex(void)
  */
 static inline void dmb(void)
 {
-	__asm__ volatile("dmb sy" ::: "memory");
+	__asm volatile("dmb sy" ::: "memory");
 }
 
 /**
@@ -87,7 +87,7 @@ static inline void dmb(void)
  */
 static inline void dmb_ish(void)
 {
-	__asm__ volatile("dmb ish" ::: "memory");
+	__asm volatile("dmb ish" ::: "memory");
 }
 
 /**
@@ -95,7 +95,7 @@ static inline void dmb_ish(void)
  */
 static inline void dmb_ishst(void)
 {
-	__asm__ volatile("dmb ishst" ::: "memory");
+	__asm volatile("dmb ishst" ::: "memory");
 }
 
 /**
@@ -103,7 +103,7 @@ static inline void dmb_ishst(void)
  */
 static inline void dsb(void)
 {
-	__asm__ volatile("dsb sy" ::: "memory");
+	__asm volatile("dsb sy" ::: "memory");
 }
 
 /**
@@ -111,7 +111,7 @@ static inline void dsb(void)
  */
 static inline void dsb_sy(void)
 {
-	__asm__ volatile("dsb sy" ::: "memory");
+	__asm volatile("dsb sy" ::: "memory");
 }
 
 /**
@@ -119,7 +119,7 @@ static inline void dsb_sy(void)
  */
 static inline void dsb_ish(void)
 {
-	__asm__ volatile("dsb ish" ::: "memory");
+	__asm volatile("dsb ish" ::: "memory");
 }
 
 /**
@@ -127,7 +127,7 @@ static inline void dsb_ish(void)
  */
 static inline void isb(void)
 {
-	__asm__ volatile("isb" ::: "memory");
+	__asm volatile("isb" ::: "memory");
 }
 
 #ifdef __cplusplus
